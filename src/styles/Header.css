@@ -1,0 +1,17 @@
+.nav {
+  background-color: #3a3f8b !important;
+  height: 85.48px;
+  justify-content: center;
+}
+
+.right button {
+  border-radius: 30px;
+  background: #ffff;
+  color: #010101;
+  margin: 15px;
+  padding: 5px;
+}
+.right img {
+  border-radius: 50%;
+}
+
