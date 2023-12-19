@@ -1,0 +1,8 @@
+.msg {
+  border-radius: 10px;
+  min-height: 700px;
+  max-height: 750px;
+  padding: 10px 20px;
+  background-color: #564e8b;
+  color: white;
+}

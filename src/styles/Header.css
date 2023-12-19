@@ -15,3 +15,44 @@
   border-radius: 50%;
 }
 
+/* 
+.nav {
+  background-color: #3a3f8b !important;
+  height: 85.48px;
+  justify-content: center;
+}
+
+.pbtn {
+  border-radius: 30px;
+  background: #ffff;
+  color: #010101;
+  margin: 15px;
+  padding: 5px;
+}
+
+.pbtn:hover {
+  background-color: #ffff !important;
+}
+
+.right img {
+  border-radius: 50%;
+}
+
+.profile_btn {
+  width: 130.96px;
+  height: 42.5px;
+  color: #010101;
+  font-family: "lato", sans-serif;
+  font: 16px;
+}
+
+.btn-text {
+  font-size: 16px;
+  font-family: lato, sans-serif;
+}
+
+@media screen and (max-width: 990px) {
+  .container-fluid {
+    position: absolute;
+  }
+} */

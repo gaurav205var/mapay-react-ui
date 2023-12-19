@@ -1,0 +1,64 @@
+.cntnr {
+  background: linear-gradient(24deg, #3a3f8b, #60579b, #5ba955) !important;
+}
+
+.form-wrap {
+  width: 424px;
+  height: 550px;
+  border-radius: 10px;
+  background-color: rgba(256, 256, 256, 0.8);
+  padding: 18px 18px;
+}
+
+
+
+.img {
+  vertical-align: middle;
+  color: #3a3f8b;
+}
+
+.sub-heading {
+  font-size: 22px;
+  font-weight: 900;
+  font-family: "popins", sans-serif;
+  color: #010101;
+  margin: 10px 0 0;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  width: 18rem;
+  padding: 12px 6px;
+  font-size: 17px;
+  font-family: "popins", sans-serif;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  min-width: 11.2rem;
+}
+
+.login_btn {
+  background-color: #5ba955;
+  padding: 10px 6px;
+}
+
+.seperator {
+  margin: 20px 138.2px;
+}
+
+.footer_text {
+  font-family: "popins", sans-serif;
+  font-size: 12px;
+  color: #010101;
+  margin: 16px 0px 8px;
+  font-weight: 800;
+}
+.form-control {
+  border-radius: 40px;
+  height: 48px;
+  font-size: 16px;
+  padding: 5px 10px;
+  background-color: #ffff !important;
+}

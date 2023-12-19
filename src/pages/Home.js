@@ -26,12 +26,12 @@ function Home() {
                 className="img logo mt-30"
                 style={{ width: "257px", height: "100px" }}
               />
-              <p class="sub-heading">Health Professional</p>
+              <p className="sub-heading">Health Professional</p>
               <div className="but d-flex flex-column h-20 justify-content-center align-items-center">
                 <NavLink to="/login">
                   <button
                     type="button"
-                    class="btn login_btn btn-success mt-20 mb-2"
+                    className="btn login_btn btn-success mt-20 mb-2"
                   >
                     LOGIN
                   </button>
@@ -39,7 +39,7 @@ function Home() {
                 <NavLink to="/signup">
                   <button
                     type="button"
-                    class="btn signup_btn btn-primary mt-10 mb-3"
+                    className="btn signup_btn btn-primary mt-10 mb-3"
                   >
                     SIGNUP
                   </button>
@@ -52,9 +52,9 @@ function Home() {
               <div className="d-flex flex-column justify-content-center align-items-center">
                 <p className="sub-heading">Admin/Reviewer</p>
                 <NavLink to="/login">
-                  <button
+                  <button 
                     type="button"
-                    class="btn login_btn btn-success  mt-20 mb-2"
+                    className="btn login_btn btn-success  mt-20 mb-2"
                   >
                     LOGIN
                   </button>

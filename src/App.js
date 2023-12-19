@@ -4,6 +4,13 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Password from "./pages/Password";
+import NewPassword from "./pages/NewPassword";
+import Profile from "./pages/Profile";
+import Certificate from "./pages/Certificate";
+import Vault from "./pages/Vault";
+import MessageCards from "./pages/Message";
+import MyApplication from "./pages/MyApplication";
 
 function App() {
   return (
@@ -11,9 +18,17 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/signup" element={<SignUp/>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/forgot-password" element={<Password />} />
+          <Route path="/new-password/*" element={<NewPassword />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/certificates" element={<Certificate />} />
+          <Route path="/vault" element={<Vault />} />
+          <Route path="/my-messages" element={<MessageCards />} />
+          <Route path="/my-applications" element={<MyApplication/>} />
+
         </Routes>
       </BrowserRouter>
     </div>

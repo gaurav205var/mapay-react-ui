@@ -1,5 +1,9 @@
 import React from "react";
-import "../styles/Home.css";
+import "../styles/Login.css";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { LoginUser } from "../store/LoginSlice";
 import bermuda_logo from "../img/bhc-logo.png";
 import {
   MDBContainer,
@@ -9,8 +13,70 @@ import {
   MDBCardBody,
 } from "mdb-react-ui-kit";
 import { NavLink } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-function Home() {
+function Login() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [serverError, setServerError] = useState(""); // New state for server error
+
+  const loginData = {
+    username,
+    password,
+  };
+  const validateForm = () => {
+    let isValid = true;
+
+    // Validate username
+    if (!username) {
+      setUsernameError("Username is required");
+      isValid = false;
+    } else {
+      setUsernameError("");
+    }
+
+    // Validate password
+    if (!password) {
+      setPasswordError("Password is required");
+      isValid = false;
+    } else {
+      setPasswordError("");
+    }
+
+    return isValid;
+  };
+  const Status = useSelector((state) => state.login.loginStatus);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (validateForm()) {
+      try {
+        dispatch(LoginUser(loginData));
+      } catch (error) {
+        setServerError("An unexpected error occurred");
+        console.error("Error:", error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    // This effect will run whenever the Status changes
+    if (Status) {
+      if (Status.status === 200) {
+        navigate("/dashboard");
+      } else if (Status.status === 204) {
+        setServerError("User not found or invalid credentials");
+      } else {
+        setServerError(`Unexpected status code: ${Status.status}`);
+      }
+    }
+  }, [Status]); // Only run the effect when Status changes
+
   return (
     <MDBContainer fluid>
       <MDBRow
@@ -18,34 +84,54 @@ function Home() {
         style={{ height: "100vh" }}
       >
         <MDBCol col="12">
-          <MDBCard className="wrapit bg-white text-dark my-5 mx-auto">
-            <MDBCardBody className="p-5 d-flex flex-column align-items-center mx-auto w-100">
+          <MDBCard className="form-wrap text-dark my-5 mx-auto">
+            <a href="/">
+              <ArrowBackIcon />
+            </a>
+
+            <MDBCardBody className="p-2 d-flex flex-column align-items-center mx-auto w-100">
               <img
                 src={bermuda_logo}
                 alt="BHC Logo"
-                className="img logo mt-30"
-                style={{ width: "257px", height: "100px" }}
+                className="img logo"
+                style={{ width: "256.55px", height: "100px" }}
               />
-              <p class="sub-heading">Login</p>
+              <p className="sub-heading mt-10">Login</p>
+              <div className="text-danger mt-2">{serverError}</div>
               <div
-                className="seperator mb-4"
+                className="seperator"
                 style={{ width: "45px", height: "8px", background: "#5694D0" }}
               ></div>
               <form>
-                <div class="form-groups mb-4">
-                  <input name="username" type="text" placeholder="Username" />
-                </div>
-                <div class="form-groups mb-4 position-relative">
-                  <input name="pwd" type="password" placeholder="xxxxxxxxxx" />
+                <div className="form-groups mb-2">
+                  <input
+                    name="username"
+                    type="text"
+                    placeholder="Username"
+                    className="form-control"
+                    onChange={(event) => setUserName(event.target.value)}
+                  />
+                  <div className="text-danger">{usernameError}</div>
                 </div>
 
-                <div class="form-groups row mb-2">
-                  <div class="col-sm-6 text-start">
+                <div className="form-groups mb-2 position-relative">
+                  <input
+                    name="pwd"
+                    type="password"
+                    placeholder="xxxxxxxxxx"
+                    className="form-control"
+                    onChange={(event) => setPassword(event.target.value)}
+                  />
+                  <div className="text-danger">{passwordError}</div>
+                </div>
+
+                <div className="form-groups row mb-2">
+                  <div className="col-sm-6 text-start">
                     <a href="signup">
                       <span>New user?</span>
                     </a>
                   </div>
-                  <div class="col-sm-6 text-end">
+                  <div className="col-sm-6 text-end">
                     <a href="forgot-password">
                       <span>Forgot password?</span>
                     </a>
@@ -54,14 +140,16 @@ function Home() {
                 <div className="d-flex flex-column justify-content-center align-items-center">
                   <NavLink>
                     <button
+                      onClick={handleSubmit}
                       type="button"
-                      class="btn login_btn btn-success  mt-20 mb-2"
+                      className="btn login_btn btn-success  mt-20 mb-2"
                     >
                       LOGIN
                     </button>
                   </NavLink>
                 </div>
               </form>
+
               <div className="my-2 mt-3 footer_text">Powered by MAPay</div>
             </MDBCardBody>
           </MDBCard>
@@ -71,4 +159,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Login;
