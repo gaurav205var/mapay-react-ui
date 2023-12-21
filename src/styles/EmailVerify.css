@@ -1,0 +1,141 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(24deg, #3a3f8b, #60579b, #5ba955);
+
+
+}
+
+.card-main {
+    width: 580px;
+    height: 100vh;
+    background-color: #ffffffcc;
+}
+
+.card-body {
+    padding-top: 0px !important;
+    color: #010101;
+    font-size: 14px;
+    font-family: 'lato', sans-serif;
+
+
+}
+
+.card-body img {
+    height: 100px;
+    display: block;
+    margin: auto auto 25px;
+
+}
+
+#img1 {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.card-body .p1 {
+    text-align: center;
+    color: #010101;
+    font-size: 22px;
+    font-family: 'popins', sans-serif;
+    margin: 10px 0px 0px;
+    font-weight: 800;
+
+}
+
+.card-body .p2 {
+    color: #2d2d2d;
+    font-size: 14px;
+    font-family: 'lato', sans-serif;
+    padding: 0px 16px;
+}
+
+.p2 span {
+    display: flex;
+    justify-content: center;
+}
+
+.card-body .p3 {
+    color: #2d2d2d;
+    font-size: 20px;
+    font-family: 'lato', sans-serif;
+    margin: 40px 0px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.e-seperator {
+    width: 50px;
+    height: 8px;
+    background-color: #5694D0;
+    margin: 20px 249px;
+}
+
+.code-container {
+    width: 178px;
+    height: 60px;
+    font-size: 14px;
+    font-family: 'lato', sans-serif;
+    margin: 15px 185px 0px;
+}
+
+.code-container .c-input {
+    width: 38px;
+    height: 60px;
+    background-color: #ffffff;
+    margin: 0px 4px 0px 0px;
+    padding: 5px;
+}
+
+.verify-btn-container {
+    width: 548px;
+    height: 46px;
+    color: #010101;
+    font-size: 14px;
+    font-family: 'lato', sans-serif;
+    margin: 20px 0px 0px;
+    padding: 0px 15px;
+    text-align: center;
+}
+
+.verify-btn {
+    width: 230px;
+    height: 46px;
+    font-size: 18px;
+    font-family: 'popins', sans-serif;
+    background-color: #3A3F8B;
+    padding: 13px 0px 33px;
+}
+
+.refresh {
+    /* border: 2px solid violet; */
+    padding: 38px 15px;
+    width: 548px;
+    height: 27px;
+}
+
+.refresh a {
+    font-size: 18px;
+    font-family: 'lato', sans-serif;
+    color: #5694D0;
+}
+
+.refresh a>span {
+    margin-left: 6px;
+}
+
+.end-text {
+    text-align: center;
+    color: #010101;
+    font-size: 12px;
+    font-family: 'popins', sans-serif;
+    margin: 16px 0px 8px;
+    font-weight: 800;
+}

@@ -5,7 +5,6 @@ export const CheckEmail = createAsyncThunk(
   "email",
   async (email, { dispatch }) => {
     try {
-      // Check email
       const emailResponse = await fetch(
         `https://creddemoapi.azurewebsites.net/api/User/CheckEmail/${email}`,
         {

@@ -8,6 +8,9 @@ import {
   Button,
 } from "@mui/material";
 import "../../styles/Header.css";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/LoginSlice";
+import { useNavigate } from "react-router-dom";
 import logo from "../../img/bhc-logo-white.png";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import EmailIcon from "@mui/icons-material/Email";
@@ -15,14 +18,34 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import profile from "../../img/profileIcon.png";
 
 const Navbar = () => {
+  const state = useSelector((state) => state.login.isAuthenticated)
+  console.log("helo", state);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
 
+
+  const LogOutHandler = (event) => {
+    event.preventDefault();
+
+    if (state) {
+      dispatch(logout());
+    }
+    console.log("clickk");
+    navigate("/login");
+  }
+
+
+
+
+  
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+
   };
 
   return (
@@ -74,7 +97,9 @@ const Navbar = () => {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>My Profile</MenuItem>
-              <MenuItem onClick={handleClose}>Log Out</MenuItem>
+              <MenuItem onClick={LogOutHandler}>Log Out</MenuItem>
+
+
             </Menu>
           </div>
         </Toolbar>

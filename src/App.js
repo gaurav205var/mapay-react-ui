@@ -11,6 +11,8 @@ import Certificate from "./pages/Certificate";
 import Vault from "./pages/Vault";
 import MessageCards from "./pages/Message";
 import MyApplication from "./pages/MyApplication";
+import EmailVerify from "./pages/EmailVerify";
+import EmailSuccessful from "./pages/EmailSuccessful"
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path="/vault" element={<Vault />} />
           <Route path="/my-messages" element={<MessageCards />} />
           <Route path="/my-applications" element={<MyApplication/>} />
+          <Route path="/email-verification/:id" element={<EmailVerify/>} />
+          <Route path="/verification-successful" element={<EmailSuccessful/>} />
 
         </Routes>
       </BrowserRouter>

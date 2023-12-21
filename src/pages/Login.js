@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Login.css";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { LoginUser } from "../store/LoginSlice";
 import bermuda_logo from "../img/bhc-logo.png";
@@ -17,6 +17,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function Login() {
   const dispatch = useDispatch();
+  const uid = useSelector((state)=>state.login.uid)
   const navigate = useNavigate();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -50,6 +51,8 @@ function Login() {
     return isValid;
   };
   const Status = useSelector((state) => state.login.loginStatus);
+  const verifyemail = useSelector((state)=>state.login.verifyemail);
+  console.log("dishooom",verifyemail);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -65,17 +68,13 @@ function Login() {
   };
 
   useEffect(() => {
-    // This effect will run whenever the Status changes
-    if (Status) {
-      if (Status.status === 200) {
-        navigate("/dashboard");
-      } else if (Status.status === 204) {
-        setServerError("User not found or invalid credentials");
-      } else {
-        setServerError(`Unexpected status code: ${Status.status}`);
-      }
+    if (verifyemail === false) {
+      navigate(`/email-verification/${uid}`);
+    } else if (verifyemail === true && Status?.status === 200) {
+      // Redirect to the dashboard when email is verified and login is successful
+      navigate("/dashboard");
     }
-  }, [Status]); // Only run the effect when Status changes
+  }, [verifyemail, Status, navigate]);
 
   return (
     <MDBContainer fluid>

@@ -8,15 +8,17 @@ import {
   MDBCardBody,
   MDBInput,
 } from "mdb-react-ui-kit";
-import { useState } from "react";
+import { useState,useEffect} from "react";
 import "../styles/SignUp.css";
 import logo from "../img/bhc-logo.png";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SignUpUser } from "../store/SignUpSlice";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function SignUp() {
+  const uid = useSelector((state) => state.signup.data);
+  console.log("id in signup", uid)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
@@ -41,7 +43,7 @@ function SignUp() {
   const [phoneVerified, setPhoneVerified] = useState(false);
   const [emailVerified, setEmailVerified] = useState(false);
   const [uType, setType] = useState(1);
-  const[isDcode,setISDCode] = useState("+91");
+  const [isDcode, setISDCode] = useState("+91");
 
   const SignUpData = {
     firstName,
@@ -141,9 +143,13 @@ function SignUp() {
 
     if (validateForm()) {
       dispatch(SignUpUser(SignUpData));
-      navigate("/login");
     }
   };
+  useEffect(() => {
+    if (uid) {
+      navigate(`/email-verification/${uid}`);
+    }
+  }, [uid, navigate]);
 
   const countryCodeOptions = [
     { value: "+91", label: "Ind" },

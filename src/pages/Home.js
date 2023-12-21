@@ -52,9 +52,9 @@ function Home() {
               <div className="d-flex flex-column justify-content-center align-items-center">
                 <p className="sub-heading">Admin/Reviewer</p>
                 <NavLink to="/login">
-                  <button 
+                  <button style={{ backgroundColor: "#5694d0" }}
                     type="button"
-                    className="btn login_btn btn-success  mt-20 mb-2"
+                    className="btn login_btn btn-primary  mt-20 mb-2"
                   >
                     LOGIN
                   </button>

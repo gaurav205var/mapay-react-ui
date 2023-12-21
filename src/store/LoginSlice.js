@@ -12,7 +12,6 @@ export const LoginUser = createAsyncThunk("LoginData", async (loginData) => {
         body: JSON.stringify(loginData),
       }
     );
-
     if (!response.ok) {
       let errorResponse;
       try {
@@ -42,8 +41,8 @@ export const LoginUser = createAsyncThunk("LoginData", async (loginData) => {
     if (contentType && contentType.includes("application/json")) {
       const data = await response.json();
       console.log("success", data);
-
-      return { data, status: response.status };
+      const { verifyemail,uid } = data;
+      return { data, status: response.status,verifyemail,uid };
     } else {
       return { status: response.status };
     }
@@ -56,22 +55,26 @@ export const LoginUser = createAsyncThunk("LoginData", async (loginData) => {
 export const LoginSlice = createSlice({
   name: "LoginSlice",
   initialState: {
-    // isAuthenticated: localStorage.getItem("token") ? true : false,
+    isAuthenticated: localStorage.getItem("token") ? true : false,
     user: "",
-    // token: localStorage.getItem("token") || "",
+    token: localStorage.getItem("token") || "",
     loading: false,
     error: null,
     loginStatus: null,
+    verifyemail:"",
+    uid:""
   },
   reducers: {
-    login: (state, action) => {
-      state.isAuthenticated = true;
-      state.user = action.payload;
-    },
+    // login: (state, action) => {
+    //   state.isAuthenticated = true;
+    //   state.user = action.payload;
+    // },
     logout: (state) => {
+      localStorage.removeItem("token");
       state.isAuthenticated = false;
       state.user = null;
       state.token = "";
+      state.loginStatus = null;
     },
   },
   extraReducers: (builder) => {
@@ -79,12 +82,15 @@ export const LoginSlice = createSlice({
       .addCase(LoginUser.pending, (state, action) => {
         state.loading = true;
       })
-      .addCase(LoginUser.fulfilled, (state, { payload: { data, status } }) => {
+      .addCase(LoginUser.fulfilled, (state, { payload: { data, status,verifyemail,uid } }) => {
+        console.log("token", data.tokenvalue);
         state.loading = false;
-        // state.token = data.accessToken;
-        // state.isAuthenticated = true;
+        state.token = data.tokenvalue;
+        state.isAuthenticated = true;
         state.loginStatus = { status };
-        // localStorage.setItem("token", JSON.stringify(data.accessToken));
+        state.verifyemail = verifyemail;
+        state.uid = uid;
+        localStorage.setItem("token", data.accessToken);
       })
       .addCase(LoginUser.rejected, (state, action) => {
         state.loading = false;
@@ -92,5 +98,5 @@ export const LoginSlice = createSlice({
       });
   },
 });
-export const { login, logout } = LoginSlice.actions;
+export const { logout } = LoginSlice.actions;
 export default LoginSlice.reducer;
