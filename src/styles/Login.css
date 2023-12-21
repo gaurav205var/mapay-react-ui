@@ -62,3 +62,18 @@
   padding: 5px 10px;
   background-color: #ffff !important;
 }
+
+/* Mobile Screens */
+@media (max-width: 450px) {
+  .form-wrap {
+    max-width: 100%; /* Adjust maximum width for smaller screens */
+  }
+
+  .sub-heading {
+    font-size: 16px; /* Further reduce font size for smaller screens */
+  }
+
+  .seperator {
+    margin: 20px auto; /* Center the separator for smaller screens */
+  }
+}

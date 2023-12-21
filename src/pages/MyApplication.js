@@ -11,9 +11,8 @@ import {
 } from "mdb-react-ui-kit";
 import Sidebar from "./Sidebar";
 import Layout from "../components/Layout/Layout";
-// import { MDBNotification } from "mdbreact";
 import "../styles/MyApplication.css";
-// import { DisabledByDefault } from "@mui/icons-material";
+
 
 const MyApplication = () => {
   return (

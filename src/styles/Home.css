@@ -63,3 +63,34 @@
   margin: 16px 0px 8px;
   font-weight: 800;
 }
+
+/* Tablet and Larger Screens */
+@media (min-width: 600px) {
+  .wrapit {
+    max-width: 424px; /* Adjust maximum width for tablet screens */
+  }
+
+  .sub-heading {
+    font-size: 22px; /* Reset font size for tablet screens */
+  }
+
+  .seperator {
+    display: block; /* Show the separator for tablet screens */
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 480px) {
+  .wrapit {
+    max-width: 100%; /* Adjust maximum width for smaller screens */
+  }
+
+  .sub-heading {
+    font-size: 16px; /* Further reduce font size for smaller screens */
+  }
+
+  .seperator {
+    display: block; /* Show the separator for smaller screens */
+    margin: 20px auto; /* Center the separator */
+  }
+}

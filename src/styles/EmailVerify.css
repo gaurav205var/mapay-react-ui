@@ -19,7 +19,7 @@
     background-color: #ffffffcc;
 }
 
-.card-body {
+.email-body {
     padding-top: 0px !important;
     color: #010101;
     font-size: 14px;
@@ -28,7 +28,7 @@
 
 }
 
-.card-body img {
+.email-body img {
     height: 100px;
     display: block;
     margin: auto auto 25px;

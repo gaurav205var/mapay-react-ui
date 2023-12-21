@@ -6,9 +6,8 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBInput,
 } from "mdb-react-ui-kit";
-import { useState,useEffect} from "react";
+import { useState, useEffect } from "react";
 import "../styles/SignUp.css";
 import logo from "../img/bhc-logo.png";
 import { useNavigate } from "react-router-dom";
@@ -158,177 +157,112 @@ function SignUp() {
   ];
 
   return (
-    <div
-      className="center-container"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <MDBContainer fluid>
+    <>
+      <MDBContainer fluid className='Signup-container'>
         <MDBRow>
           <MDBCard className="card-container">
-            <a href="/">
-              <ArrowBackIcon />
-            </a>
-            <MDBCardBody className="px-4">
-              <div className="logo-container text-center mb-4">
+            <MDBCardBody className="px-4 signup-body">
+              <div className='d-flex mt-2 logo'><a href="/">
+                <ArrowBackIcon />
+              </a>
                 <img src={logo} alt="" width={256.55} height={100} />
               </div>
+
               <div
                 className="text"
                 style={{ display: "flex", justifyContent: "center" }}
               >
-                <p>Create a new account</p>
+                <p className="signup-heading">Create a new account</p>
               </div>
               <div
                 className="seperator mx-auto mb-2 mt-0 w-30"
                 style={{ width: "45px", height: "8px", background: "#007BFF" }}
               ></div>
-              <MDBRow>
-                <MDBCol md="6">
-                  <label style={{ fontWeight: "800" }}>First Name</label>
-                  <MDBInput
-                    wrapperClass="mb-4"
-                    label="First Name"
-                    size="lg"
-                    id="form1"
-                    type="text"
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                  <div className="text-danger">{firstNameError}</div>
-                </MDBCol>
-
-                <MDBCol md="6">
-                  <label style={{ fontWeight: "800" }}>Last Name</label>
-                  <MDBInput
-                    wrapperClass="mb-4"
-                    label="Last Name"
-                    size="lg"
-                    className="input_field"
-                    id="form2"
-                    type="text"
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                  <div className="text-danger">{lastNameError}</div>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="6">
-                  <label style={{ fontWeight: "800" }}>Date of Birth</label>
-                  <MDBInput
-                    wrapperClass="mb-4"
-                    label="Date of Birth"
-                    size="lg"
-                    className="input_field"
-                    id="form3"
-                    type="date"
-                    onChange={(e) => setDob(e.target.value)}
-                  />
-
-                  <div className="text-danger">{dobError}</div>
-                </MDBCol>
-
-                <MDBCol md="6">
-                  <label style={{ fontWeight: "800" }}>Username</label>
-                  <MDBInput
-                    wrapperClass="mb-4"
-                    label="Username"
-                    size="lg"
-                    className="input_field"
-                    id="form4"
-                    type="text"
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                  <div className="text-danger">{usernameError}</div>
-                </MDBCol>
-              </MDBRow>
-
-              <MDBRow>
-                <MDBCol md="6">
-                  <label style={{ fontWeight: "800" }}>Password</label>
-                  <MDBInput
-                    wrapperClass="mb-4"
-                    label="Password"
-                    size="lg"
-                    className="input_field"
-                    id="form4"
-                    type="text"
-                    onChange={(e) => setCurrentPassword(e.target.value)}
-                  />
-                  <div className="text-danger">{currentPasswordError}</div>
-                </MDBCol>
-
-                <MDBCol md="6">
-                  <label style={{ fontWeight: "800" }}>Confirm Password</label>
-                  <MDBInput
-                    wrapperClass="mb-4"
-                    label="Confirm Password"
-                    size="lg"
-                    className="input_field"
-                    id="form5"
-                    type="text"
-                    onChange={(e) => setNewPassword(e.target.value)}
-                  />
-                  <div className="text-danger">{newPasswordError}</div>
-                </MDBCol>
-              </MDBRow>
-
-              <MDBRow>
-                <MDBCol md="6">
-                  <label style={{ fontWeight: "800" }}>Email</label>
-                  {/* <img src="" alt="verified" width={20} /> */}
-                  <MDBInput
-                    wrapperClass="mb-4"
-                    label="Email"
-                    size="lg"
-                    className="input_field"
-                    id="form4"
-                    type="text"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <div className="text-danger">{emailError}</div>
-                </MDBCol>
-
-                <MDBCol md="6">
-                  <label style={{ fontWeight: "800" }}>Phone</label>
-                  {/* <img src="" alt="verified" width={20} /> */}
-
-                  <div className="d-flex align-items-center">
-                    {/* Country Code Dropdown */}
-                    <div className="country-code-dropdown mb-4 mx-2">
-                      <select className="form-select" style={{ width: "92px" }}>
-                        {countryCodeOptions.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            ({option.value})
-                          </option>
-                        ))}
-                      </select>
+              <div className="my-inputs">
+                <MDBRow>
+                  <MDBCol md="6">
+                    <div className="input-wrapper">
+                      <label htmlFor="firstName2">First Name</label>
+                      <input type="text" id="firstName2"
+                        onChange={(e) => setFirstName(e.target.value)} />
+                      <div className="text-danger">{firstNameError}</div>
                     </div>
 
-                    {/* Phone Number Input */}
-                    <MDBInput
-                      style={{ width: "132px" }}
-                      wrapperClass="mb-4"
-                      label="Phone Number"
-                      size="lg"
-                      className="input_field"
-                      id="form5"
-                      type="text"
-                      onChange={(e) => setPhone(e.target.value)}
-                    />
-                    <div className="text-danger">{phoneError}</div>
-                  </div>
+                  </MDBCol>
+
+                  <MDBCol md="6">
+                    <div className="input-wrapper">
+                      <label htmlFor="lastName2">Last Name</label>
+                      <input type="text" id="lastName2" onChange={(e) => setLastName(e.target.value)} />
+                      <div className="text-danger">{lastNameError}</div>
+                    </div>
+
+                  </MDBCol>
+                </MDBRow>
+                <MDBRow>
+                  <MDBCol md="6">
+                    <div className="input-wrapper">
+                      <label htmlFor="dob">Date of Birth</label>
+                      <input type="text" id="dob" onChange={(e) => setDob(e.target.value)} />
+                      <div className="text-danger">{dobError}</div>
+                    </div>
+
+                  </MDBCol>
+
+                  <MDBCol md="6">
+                    <div className="input-wrapper">
+                      <label htmlFor="username">Username</label>
+                      <input type="text" id="username" onChange={(e) => setUsername(e.target.value)} />
+                      <div className="text-danger">{usernameError}</div>
+                    </div>
+
+                  </MDBCol>
+                </MDBRow>
+                <MDBRow>
+                  <MDBCol md="6">
+                    <div className="input-wrapper">
+                      <label htmlFor="password">Password</label>
+                      <input type="text" id="password" onChange={(e) => setCurrentPassword(e.target.value)} />
+                      <div className="text-danger">{currentPasswordError}</div>
+                    </div>
+
+                  </MDBCol>
+
+                  <MDBCol md="6">
+                    <div className="input-wrapper">
+                      <label>Confirm Password</label>
+                      <input type="text" id="cpassword" onChange={(e) => setNewPassword(e.target.value)} />
+                      <div className="text-danger">{newPasswordError}</div>
+                    </div>
+
+                  </MDBCol>
+                </MDBRow>
+                <MDBRow>
+                  <MDBCol md="6">
+                    <div className="input-wrapper">
+                      <label htmlFor="email">Email</label>
+                      <input type="text" id="email" onChange={(e) => setEmail(e.target.value)} />
+                      <div className="text-danger">{emailError}</div>
+                    </div>
+
+                  </MDBCol>
+
+                  <MDBCol md="6">
+                    <div className="input-wrapper">
+                      <label htmlFor="phoneno">Phone Number</label>
+                      <input type="text" id="phoneno" onChange={(e) => setPhone(e.target.value)} />
+                      <div className="text-danger">{phoneError}</div>
+                    </div>
+                  </MDBCol>
+                </MDBRow>
+                <div className="text-end already-user">
                   {/* Already a user? text */}
-                  <span className="rz-link-text" style={{ marginLeft: "8rem" }}>
+                  <span className="mt-2">
                     <a href="/login">Already a user?</a>
                   </span>
-                </MDBCol>
-              </MDBRow>
-
-              {/* Checkbox for "I accept the Terms and Conditions" */}
-              <div className="mb-4 accept1">
+                </div>
+              </div>
+              <div className="check-box">
                 <input
                   type="checkbox"
                   id="acceptTerms"
@@ -336,7 +270,7 @@ function SignUp() {
                   checked={accepttncs}
                   onChange={() => setAcceptTerms(!accepttncs)}
                 />
-                <label htmlFor="acceptTerms" className="ms-2 ">
+                <label htmlFor="acceptTerms" className="ms-2" style={{ fontStyle: "italic" }}>
                   <span style={{ color: "#999999" }}> I accept the</span>
                   <span style={{ color: "#1c3dd7" }}>
                     {" "}
@@ -344,24 +278,30 @@ function SignUp() {
                   </span>
                 </label>
                 <div className="text-danger">{acceptTermsError}</div>
-
-                <div className="text-center">
-                  <MDBBtn
-                    className="btn-success"
-                    size="lg"
-                    onClick={submitHandler}
-                  >
-                    SIGN UP
-                  </MDBBtn>
-                </div>
               </div>
+              {/* Checkbox for "I accept the Terms and Conditions" */}
+
+
+
+              <div className="text-center">
+                <MDBBtn
+                  className="btn-success"
+                  size="lg"
+                  onClick={submitHandler}
+                >
+                  SIGN UP
+                </MDBBtn>
+              </div>
+
+              <p className="text-center my-2 mt-3">Powered by MAPay</p>
             </MDBCardBody>
           </MDBCard>
         </MDBRow>
       </MDBContainer>
-    </div>
+    </>
   );
 }
 
 export default SignUp;
+
 

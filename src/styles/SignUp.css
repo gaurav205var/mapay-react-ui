@@ -1,7 +1,6 @@
-.center-container {
+.Signup-container {
   background: linear-gradient(24deg, #3a3f8b, #60579b, #5ba955) !important;
   min-height: 100vh;
-  /* Use min-height instead of height for responsive behavior */
   padding: 4rem;
   display: flex;
   justify-content: center;
@@ -14,43 +13,91 @@ body {
 }
 
 .card-container {
-  border: 2px solid green;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 3rem;
-  max-width: 750px;
+  /* height: 100vh; */
+  /* height: 730px; */
+  min-height: 80vh;
+  width: 100%;
+  max-width: 580px;
   margin: auto;
-
-  /* Media queries for responsive design */
-  @media screen and (max-width: 768px) {
-    width: 80%;
-  }
-
-  @media screen and (max-width: 576px) {
-    width: 100%;
-    padding: 2rem;
-  }
+  padding: 0px 20px 5px;
+  background-color: rgba(256, 256, 256, 0.8);
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: -70px;
+  margin-bottom: -64px;
+}
+.signup-body {
+  font-family: "lato", sans-serif;
+  padding: 0 0 0 0 !important;
+}
+.logo img {
+  margin: auto auto 10px;
+}
+.signup-heading {
+  font-size: 22px;
+  font-weight: 800;
+  color: #010101;
+}
+.my-inputs {
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
-.input_field {
+.input-wrapper {
   width: 100%;
-  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 15px;
+}
+label {
+  /* width: 100%; */
+  height: 18px;
+  font-weight: 800;
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: #010101;
   font-family: popins, sans-serif;
+  margin-top: 10px;
+}
+input {
+  width: 100%;
+  padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 0.5rem;
-
-  @media screen and (max-width: 576px) {
-    font-size: 0.8rem;
-  }
+  width: 244.2px;
+  height: 40px;
 }
-
 .accept1 {
   text-align: center;
+}
 
-  @media screen and (max-width: 576px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.text-danger {
+  font-size: 11.2px;
+}
+.text-center {
+  font-size: 12px;
+  font-weight: 800;
+  color: #010101;
+}
+.already-user {
+  position: absolute;
+  right: 30px;
+  margin-top: 15px;
+  color: #3a3f8b;
+  font-size: 14px;
+}
+.check-box {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 0;
+}
+.check-box input {
+  width: 18.4px;
+  height: 18.4px;
+}
+.check-box label {
+  font-weight: normal;
+  font-size: 15px;
 }

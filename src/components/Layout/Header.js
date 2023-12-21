@@ -71,16 +71,6 @@ const Navbar = () => {
               <img src={profile} alt="" width={30} height={30} />
               <ArrowDropDownIcon />
             </Button>
-            {/* <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleMenu}
-              color="inherit"
-            >
-              <AccountCircleIcon />
-            </IconButton> */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorEl}
