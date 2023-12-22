@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Login.css";
 import { useState, useEffect } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { LoginUser } from "../store/LoginSlice";
 import bermuda_logo from "../img/bhc-logo.png";
@@ -17,7 +17,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function Login() {
   const dispatch = useDispatch();
-  const uid = useSelector((state)=>state.login.uid)
+  const {uid,utype} = useSelector((state) => state.login.user)
   const navigate = useNavigate();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -51,8 +51,8 @@ function Login() {
     return isValid;
   };
   const Status = useSelector((state) => state.login.loginStatus);
-  const verifyemail = useSelector((state)=>state.login.verifyemail);
-  console.log("dishooom",verifyemail);
+  const verifyemail = useSelector((state) => state.login.verifyemail);
+  console.log("dishooom", verifyemail);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -71,8 +71,20 @@ function Login() {
     if (verifyemail === false) {
       navigate(`/email-verification/${uid}`);
     } else if (verifyemail === true && Status?.status === 200) {
-      // Redirect to the dashboard when email is verified and login is successful
-      navigate("/dashboard");
+      switch (utype) {
+        case 1:
+          navigate("/dashboard");
+          break;
+        case 2:
+          navigate("/admin-dashboard");
+          break;
+        case 3:
+          navigate("/reviewer-dashboard");
+          break;
+        default:
+          
+          break;
+      }    
     }
   }, [verifyemail, Status, navigate]);
 

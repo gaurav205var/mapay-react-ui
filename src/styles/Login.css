@@ -66,14 +66,14 @@
 /* Mobile Screens */
 @media (max-width: 450px) {
   .form-wrap {
-    max-width: 100%; /* Adjust maximum width for smaller screens */
+    max-width: 100%; 
   }
 
   .sub-heading {
-    font-size: 16px; /* Further reduce font size for smaller screens */
+    font-size: 16px; 
   }
 
   .seperator {
-    margin: 20px auto; /* Center the separator for smaller screens */
+    margin: 20px auto;
   }
 }

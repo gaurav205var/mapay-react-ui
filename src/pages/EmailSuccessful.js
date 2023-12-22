@@ -23,7 +23,7 @@ const EmailSuccessful = () => {
       <MDBContainer fluid className='container3' >
         <MDBCard className='card-main-3'>
 
-          <MDBCardBody className='card-body-3 '>
+          <MDBCardBody className='card-body-3'>
             <div className='d-flex mt-2 '>
 
               <img id='img-1' src={verifyLogo} alt="Elogo" />

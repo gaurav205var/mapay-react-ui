@@ -42,7 +42,7 @@ export const LoginUser = createAsyncThunk("LoginData", async (loginData) => {
       const data = await response.json();
       console.log("success", data);
       const { verifyemail,uid } = data;
-      return { data, status: response.status,verifyemail,uid };
+      return { data, status: response.status,verifyemail,uid,};
     } else {
       return { status: response.status };
     }
@@ -72,7 +72,7 @@ export const LoginSlice = createSlice({
     logout: (state) => {
       localStorage.removeItem("token");
       state.isAuthenticated = false;
-      state.user = null;
+      // state.user = null;
       state.token = "";
       state.loginStatus = null;
     },
@@ -83,13 +83,14 @@ export const LoginSlice = createSlice({
         state.loading = true;
       })
       .addCase(LoginUser.fulfilled, (state, { payload: { data, status,verifyemail,uid } }) => {
-        console.log("token", data.tokenvalue);
+        // console.log("token", data.tokenvalue);
         state.loading = false;
         state.token = data.tokenvalue;
         state.isAuthenticated = true;
         state.loginStatus = { status };
         state.verifyemail = verifyemail;
         state.uid = uid;
+        state.user = data;
         localStorage.setItem("token", data.accessToken);
       })
       .addCase(LoginUser.rejected, (state, action) => {

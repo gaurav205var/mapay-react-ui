@@ -14,6 +14,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SignUpUser } from "../store/SignUpSlice";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function SignUp() {
   const uid = useSelector((state) => state.signup.data);
@@ -145,10 +147,25 @@ function SignUp() {
     }
   };
   useEffect(() => {
-    if (uid) {
+    if (uid === -1) {
+      // Display a toast notification for username or email already existing
+      toast.error("Username or email already exists", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    } else if (uid) {
       navigate(`/email-verification/${uid}`);
     }
   }, [uid, navigate]);
+  // useEffect(() => {
+  //   if (uid) {
+  //     navigate(`/email-verification/${uid}`);
+  //   }
+  // }, [uid, navigate]);
 
   const countryCodeOptions = [
     { value: "+91", label: "Ind" },
@@ -292,7 +309,7 @@ function SignUp() {
                   SIGN UP
                 </MDBBtn>
               </div>
-
+              <ToastContainer />
               <p className="text-center my-2 mt-3">Powered by MAPay</p>
             </MDBCardBody>
           </MDBCard>

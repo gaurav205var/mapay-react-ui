@@ -12,6 +12,8 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { EmailVerification, GetUserandOtp } from "../store/EmailVerifySlice";
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function EmailVerify() {
 
@@ -55,6 +57,15 @@ export default function EmailVerify() {
         if (userEnteredOtp === DbOtp) {
             console.log("Verification successful");
             dispatch(EmailVerification(input));
+        }else{
+            toast.error("The OTP is not Valid", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+              });
         }
     }
     useEffect(() => {
@@ -91,24 +102,24 @@ export default function EmailVerify() {
                         <p className='p2'>We have sent a verification code to your email address. Enter the code to verify <span>the email.</span></p>
                         <p className='p3'>Verification Code:</p>
                         <div className='code-container'>
-                            <input type="text" className='c-input' id='1'
+                            <input type="text" className='c-input text-center' id='1'
                                 onChange={(e) => { setPin1(e.target.value); handleInput(e, document.getElementById('2')); }} />
-                            <input type="text" className='c-input' id='2'
+                            <input type="text" className='c-input text-center' id='2'
                                 onChange={(e) => { setPin2(e.target.value); handleInput(e, document.getElementById('3')); }}
                             />
-                            <input type="text" className='c-input' id='3'
+                            <input type="text" className='c-input text-center' id='3'
                                 onChange={(e) => { setPin3(e.target.value); handleInput(e, document.getElementById('4')); }} />
 
-                            <input type="text" className='c-input' id='4'
+                            <input type="text" className='c-input text-center' id='4'
                                 onChange={(e) => setPin4(e.target.value)} />
                         </div>
                         <div className='verify-btn-container'>
                             <MDBBtn className='verify-btn' onClick={VerifyHandler}>Verify</MDBBtn>
                         </div>
-                        <div className="refresh col-sm-12 mt-40 mb-70 text-center">
+                        <div className="refresh col-sm-12 mt-40 mb-70">
                             <a href="#!"><MDBIcon fas icon="redo" /><span>Send a new code</span></a>
                         </div>
-
+                        <ToastContainer />
                         <div className="end-text my-2 mt-2">Powered by MAPay</div>
                     </MDBCardBody>
                 </MDBCard>
