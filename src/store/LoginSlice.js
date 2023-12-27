@@ -41,8 +41,8 @@ export const LoginUser = createAsyncThunk("LoginData", async (loginData) => {
     if (contentType && contentType.includes("application/json")) {
       const data = await response.json();
       console.log("success", data);
-      const { verifyemail,uid } = data;
-      return { data, status: response.status,verifyemail,uid,};
+      const { verifyemail, uid, tokenvalue } = data;
+      return { data, status: response.status, verifyemail, uid, tokenvalue };
     } else {
       return { status: response.status };
     }
@@ -61,8 +61,8 @@ export const LoginSlice = createSlice({
     loading: false,
     error: null,
     loginStatus: null,
-    verifyemail:"",
-    uid:""
+    verifyemail: "",
+    uid: ""
   },
   reducers: {
     // login: (state, action) => {
@@ -82,16 +82,15 @@ export const LoginSlice = createSlice({
       .addCase(LoginUser.pending, (state, action) => {
         state.loading = true;
       })
-      .addCase(LoginUser.fulfilled, (state, { payload: { data, status,verifyemail,uid } }) => {
-        // console.log("token", data.tokenvalue);
+      .addCase(LoginUser.fulfilled, (state, { payload: { data, status, verifyemail, uid, tokenvalue } }) => {
         state.loading = false;
-        state.token = data.tokenvalue;
+        state.token = tokenvalue;
         state.isAuthenticated = true;
         state.loginStatus = { status };
         state.verifyemail = verifyemail;
         state.uid = uid;
         state.user = data;
-        localStorage.setItem("token", data.accessToken);
+        localStorage.setItem("token", tokenvalue);
       })
       .addCase(LoginUser.rejected, (state, action) => {
         state.loading = false;

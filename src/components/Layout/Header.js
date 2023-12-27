@@ -12,19 +12,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/LoginSlice";
 import { useNavigate } from "react-router-dom";
 import logo from "../../img/bhc-logo-white.png";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import EmailIcon from "@mui/icons-material/Email";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import profile from "../../img/profileIcon.png";
+import HeaderNotificationDropdown from "../../pages/HeaderNotificationModal";
 
 const Navbar = () => {
-  const state = useSelector((state) => state.login.isAuthenticated)
-  console.log("helo", state);
+  const state = useSelector((state) => state.login.isAuthenticated);
+  const { uname } = useSelector((state) => state.login.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
-
-
+  
   const LogOutHandler = (event) => {
     event.preventDefault();
 
@@ -38,7 +37,7 @@ const Navbar = () => {
 
 
 
-  
+
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -57,7 +56,8 @@ const Navbar = () => {
           </Typography>
           <div className="right">
             <EmailIcon className="eicon" />
-            <NotificationsIcon style={{ marginLeft: "1rem" }} />
+            {/* <NotificationsIcon style={{ marginLeft: "1rem" }} /> */}
+            <HeaderNotificationDropdown className="notification-1" />
             <Button
               onClick={handleMenu}
               sx={{
@@ -67,7 +67,7 @@ const Navbar = () => {
               }}
               variant="contained"
             >
-              <span>Yash</span>
+              <span>{uname}</span>
               <img src={profile} alt="" width={30} height={30} />
               <ArrowDropDownIcon />
             </Button>

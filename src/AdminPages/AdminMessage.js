@@ -1,18 +1,24 @@
-import React from "react";
+import { React, useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody } from "mdbreact";
 import Layout from "../components/Layout/Layout";
 import AdminSidebar from "./AdminSidebar";
 import "../styles/Message.css";
 
 const MessageCards = () => {
+    const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
+
+    const toggleSidebar = () => {
+        setIsSidebarExpanded(!isSidebarExpanded);
+    };
+
     return (
         <Layout>
             <MDBContainer fluid>
                 <MDBRow>
-                    <MDBCol md="3">
-                        <AdminSidebar />
-                    </MDBCol>
-                    <MDBCol md="9" style={{ marginLeft: "-100px" }}>
+
+                    <AdminSidebar isExpanded={isSidebarExpanded} onToggleSidebar={toggleSidebar} />
+
+                    <MDBCol md={isSidebarExpanded ? "9" : "11"}>
                         <h3 className="mt-2 mb-2 p-2">Messages</h3>
                         <MDBRow>
                             {/* Left Message Card (Col-3) */}

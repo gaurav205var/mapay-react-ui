@@ -1,0 +1,219 @@
+ .modal_content {
+     max-width: 600px;
+     width: 100%;
+     height: 589px;
+     position: absolute;
+     top: 80px;
+     background-color: #ffffff;
+     z-index: -10;
+ }
+
+ .modal-head {
+     display: flex;
+     justify-content: space-between;
+     background-color: #f8f9fa;
+     height: 60px;
+     border: 1.5px solid gainsboro;
+ }
+
+ .closing-modal {
+     border: none;
+     font-size: 25px;
+     font-family: 'lato', sans-serif;
+     color: #ffffff;
+     font-weight: 300;
+     width: 60px;
+     height: 60px;
+     background-color: #ff0000;
+     position: absolute;
+     right: 0px;
+     border-top-right-radius: 7px;
+ }
+
+ .modal-body {
+     width: 470px;
+     height: 447px;
+     padding: 16px;
+     border: 1.5px solid gainsboro;
+     margin: 16px;
+     border-radius: 8px;
+ }
+
+ .mb-3 {
+     margin-bottom: 1rem;
+ }
+
+ .inputbar-container {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     width: 424px;
+     height: 84px;
+ }
+
+ .modal-body img {
+     width: 100px;
+     height: 100px;
+     padding: 1px;
+     object-fit: cover;
+     outline: 2px solid gainsboro;
+     border-radius: 8px;
+ }
+
+ .mb-4 {
+     margin-bottom: 1.5rem;
+ }
+
+ .form-labeling {
+     align-self: flex-start;
+     color: #010101;
+     font-size: 18px;
+     font-family: 'lato', sans-serif;
+     font-weight: 300;
+     margin-bottom: 10px;
+     letter-spacing: 0.5px;
+
+ }
+
+ .form-control-2 {
+     width: 424px;
+     height: 60px;
+     font-size: 1rem;
+     border: 1px solid #ced4da;
+     border-radius: 5px;
+ }
+
+ .profile-footer {
+     width: 498px;
+     height: 80px;
+     padding: 12px;
+     background-color: #f8f9fa;
+     border-top: 1px solid #dee2e6;
+ }
+
+
+ .profile-footer .profile-btn {
+     width: 180px;
+     height: 47.01px;
+     margin-right: 10px;
+     color: #ffffff;
+     font-size: 18px;
+     font-family: 'popins', sans-serif;
+ }
+
+ #cancel-btn {
+     background-color: #3A3F8B;
+     margin: 4px;
+     padding: 10px 6px;
+ }
+
+ #update-btn {
+     background-color: #5BA955;
+     margin: 4px;
+     padding: 10px 6px;
+ }
+
+ @media only screen and (max-width: 375px) {
+     .modal_content {
+         height: fit-content;
+         background-color: #ffffff;
+     }
+
+     .modal-body {
+         width: 92%;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         background-color: #ffffff;
+         align-items: center;
+
+     }
+
+     .inputbar-container {
+         width: 100%;
+         margin-bottom: 12px;
+
+     }
+
+     .form-control-2 {
+         width: 100%;
+
+     }
+
+     .profile-footer {
+         width: 100%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding-top: 0px;
+         width: 347px;
+         height: 100px;
+
+     }
+
+     .profile-footer .profile-btn {
+         height: 40px;
+         margin-bottom: 8px;
+     }
+
+
+ }
+
+ @media only screen and (max-width:578px) {
+     .modal_content {
+         height: fit-content;
+         width: 100%;
+     }
+
+     .modal-body {
+         width: 92%;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         background-color: #ffffff;
+         align-items: center;
+
+     }
+
+
+     .inputbar-container {
+         width: 100%;
+
+     }
+
+     .form-control-2 {
+         width: 100%;
+
+     }
+
+     .profile-footer {
+         width: 100%;
+         overflow: hidden;
+     }
+
+ }
+
+ @media only screen and (min-width:412px) and (max-width:576px) {
+     /* .modal_content {
+         border: 2px solid red;
+         height: fit-content;
+         width: 100%;
+         height: fit-content;
+     } */
+
+
+     .profile-footer {
+         width: 100%;
+         overflow: hidden;
+         height: 135px;
+     }
+
+ }
+
+ @media only screen and (max-width:390px) {
+     .profile-footer {
+         height: auto;
+     }
+
+ }

@@ -6,12 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleRight, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'
 
 
-const Sidebar = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
+const Sidebar = ({ isExpanded, onToggleSidebar }) => {
   const location = useLocation();
-  const toggleSidebar = () => {
-    setIsExpanded(!isExpanded);
-  };
+  // const [isExpanded, setIsExpanded] = useState(true);
+  // const toggleSidebar = () => {
+  //   setIsExpanded(!isExpanded);
+  // };
 
   return (
     <div className={`${isExpanded ? "sidebar-expand" : "sidebar-collapse"} col-md-${isExpanded ? "3" : "1"}`}>
@@ -26,7 +26,7 @@ const Sidebar = () => {
           fontSize: "26px"
 
         }}
-        onClick={toggleSidebar}
+        onClick={onToggleSidebar}
       >
         {isExpanded ? (
           <FontAwesomeIcon icon={faArrowCircleLeft} />

@@ -13,7 +13,12 @@ import { MDBRow, MDBCol } from "mdb-react-ui-kit";
 import Layout from "../components/Layout/Layout";
 import Sidebar from "./Sidebar";
 
-function Profile() {
+function Certificate() {
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsSidebarExpanded(!isSidebarExpanded);
+  };
   const [collapseID, setCollapseID] = useState("");
 
   const toggleAccordion = (accordionID) => () => {
@@ -30,13 +35,11 @@ function Profile() {
     <Layout>
       <MDBContainer fluid>
         <MDBRow>
-          <MDBCol md="3">
-            <Sidebar />
-          </MDBCol>
+        <Sidebar isExpanded={isSidebarExpanded} onToggleSidebar={toggleSidebar} />
+      
 
-          <MDBCol md="9">
-           
-            <MDBContainer style={{ marginLeft: "-100px" }}>
+          <MDBCol md={isSidebarExpanded ? "9":"11"}>    
+            <MDBContainer>
             <h2 className="mt-3">
               BHC Certificates
             </h2>
@@ -65,4 +68,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default Certificate;

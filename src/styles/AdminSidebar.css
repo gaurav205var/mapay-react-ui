@@ -32,8 +32,8 @@
   }
   
   .sidebar-collapse {
-    width: 60px;
-    margin-left: -12px;
+    width: 90px;
+    /* margin-left: -12px; */
     border-radius: 5px;
   }
   

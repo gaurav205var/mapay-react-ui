@@ -22,17 +22,16 @@
   left: 1rem;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  /* top: 2rem; */
   width: 219px;
   height: 45px;
   outline: none;
   border: none;
 }
 
-.notification {
+/* .notification {
   width: 230px;
   height: 44px;
-}
+} */
 
 .title_btn {
   border-top-right-radius: 10px;

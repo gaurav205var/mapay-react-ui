@@ -27,9 +27,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          <Route path="/reviewer-dashboard" element={<ReviewDashboard />} />
+          <Route path="/dashboard/:id" element={<Dashboard />} />
+          <Route path="/admin-dashboard/:id" element={<AdminDashboard />} />
+          <Route path="/reviewer-dashboard/:id" element={<ReviewDashboard />} />
           <Route path="/forgot-password" element={<Password />} />
           <Route path="/new-password/*" element={<NewPassword />} />
           <Route path="/profile" element={<Profile />} />

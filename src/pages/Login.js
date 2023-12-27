@@ -52,7 +52,7 @@ function Login() {
   };
   const Status = useSelector((state) => state.login.loginStatus);
   const verifyemail = useSelector((state) => state.login.verifyemail);
-  console.log("dishooom", verifyemail);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -73,13 +73,13 @@ function Login() {
     } else if (verifyemail === true && Status?.status === 200) {
       switch (utype) {
         case 1:
-          navigate("/dashboard");
+          navigate(`/dashboard/${uid}`);
           break;
         case 2:
-          navigate("/admin-dashboard");
+          navigate(`/admin-dashboard/${uid}`);
           break;
         case 3:
-          navigate("/reviewer-dashboard");
+          navigate(`/reviewer-dashboard/${uid}`);
           break;
         default:
           

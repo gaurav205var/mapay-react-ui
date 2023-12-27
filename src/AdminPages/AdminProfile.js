@@ -1,4 +1,4 @@
-import React from "react";
+import {React,useState} from "react";
 import {
   MDBBtn,
   MDBContainer,
@@ -17,6 +17,12 @@ import "../styles/Profile.css";
 import AdminSidebar from "./AdminSidebar";
 
 function Profile() {
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsSidebarExpanded(!isSidebarExpanded);
+  };
+
   const countryCodeOptions = [
     { value: "+91", label: "Ind", flag: "path/to/usa-flag-icon" },
     { value: "+1", label: "USA", flag: "path/to/usa-flag-icon" }, // Replace with the actual path
@@ -29,15 +35,15 @@ function Profile() {
 
       <MDBContainer fluid>
         <MDBRow>
-          <MDBCol md="3">
-          <AdminSidebar />
-          </MDBCol>
 
-          <MDBCol md="9">
+          <AdminSidebar isExpanded={isSidebarExpanded} onToggleSidebar={toggleSidebar} />
+
+
+          <MDBCol md={isSidebarExpanded ? "9" : "11"}>
             <MDBRow>
-              
-              <MDBCol md="12" style={{ marginLeft: "-100px" }}>
-              <h2 className="mt-4">Profile</h2>
+
+              <MDBCol md="12">
+                <h2 className="mt-4">Profile</h2>
                 <MDBCard>
                   <MDBCardBody className="px-4">
                     <div className="icon mb-2 text-center">
