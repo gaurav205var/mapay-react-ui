@@ -16,7 +16,8 @@ export const Notification = createAsyncThunk("uid", async (uid) => {
             }
         });
         const responseData = await GetUser.json();
-        const { notificationCount } = responseData;
+        // const { notificationCount } = responseData;
+        const notificationCount = 5;
         console.log("count", notificationCount);
         console.log("Data:", responseData);
 
@@ -29,8 +30,18 @@ export const Notification = createAsyncThunk("uid", async (uid) => {
                 "Authorization": `Bearer ${authToken}`,
             }
         });
+        console.log("HTTP Status Code:", GetNotification.status);
+        console.log("Headers:", GetNotification.headers);
+
+        if (!GetNotification.ok) {
+            throw new Error(`HTTP error! Status: ${GetNotification.status}`);
+        }
+
         const ResNotification = await GetNotification.json();
-        console.log("success", ResNotification);
+        console.log("heyyy", ResNotification);
+        return {
+            ResNotification
+        };
 
     } catch (error) {
         // Handle errors
@@ -44,7 +55,8 @@ const NotificationSlice = createSlice({
     name: "NotificationSlice",
     initialState: {
         loading: false,
-        error: null
+        error: null,
+        data: ""
     },
     reducers: {
 
@@ -55,10 +67,11 @@ const NotificationSlice = createSlice({
         })
         builder.addCase(Notification.fulfilled, (state, action) => {
             state.loading = false;
+            state.data = action.payload.ResNotification;
         })
         builder.addCase(Notification.rejected, (state, action) => {
             state.loading = false
-            state.error = action.payload
+            state.error = action.payload;
         })
     }
 }

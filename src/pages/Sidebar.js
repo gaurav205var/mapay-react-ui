@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleRight, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'
 
 
-const Sidebar = ({ isExpanded, onToggleSidebar}) => {
+const Sidebar = ({ isExpanded, onToggleSidebar }) => {
   const location = useLocation();
-
+  // const pathname = location.pathname;
+  // const id = pathname.split('/').pop();
   return (
     <div className={`${isExpanded ? "sidebar-expand" : "sidebar-collapse"} col-md-${isExpanded ? "3" : "1"}`}>
       <Link className="mt-2 mb-1"

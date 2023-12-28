@@ -16,21 +16,35 @@ import {
 } from "mdb-react-ui-kit";
 
 const StandaloneSidebar = () => {
-  const location = useLocation();
-  const pathname = location.pathname;
-  const id = pathname.split('/').pop();
-  const uid = id | 0;
-  console.log('ID from URL:', uid);
+  const { uname,uid} = useSelector((state) => state.login.user)
+  const id = uid | 0;
+  console.log('ID from URL:', id);
   const dispatch = useDispatch();
-  const { uname } = useSelector((state) => state.login.user)
+  const notifications = useSelector((state) => state.notification.data);
+  
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
 
   const toggleSidebar = () => {
     setIsSidebarExpanded(!isSidebarExpanded);
   };
   useEffect(() => {
-    dispatch(Notification(uid))
+    dispatch(Notification(id))
   }, [])
+
+   // Function to format date
+function formatDate(createddate) {
+  const date = new Date(createddate);
+  const options = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true,
+  };
+  return date.toLocaleString('en-US', options);
+}
 
   return (
     <>
@@ -104,24 +118,23 @@ const StandaloneSidebar = () => {
                       </MDBCardBody>
                     </MDBCard>
                   </MDBCol>
-                  <MDBCol md="2">
-                    <div
-                      className="not_contain"
-                      style={{
-                        width: "280px",
-                        height: "250px",
-                        marginLeft: "-10.6px",
-                      }}
-                    >
-                      <div>
-                        <button className="title_btn">My Notification</button>
-                      </div>
-                      <div
-                        className="awesome"
-                        style={{ padding: "10px", margin: "10px" }}
-                      >
+                  <MDBCol md="2" className="pl-10">
+                    <div className="title_btn">My Notifications</div>
+                    <div className="awesome">
+                      {notifications.length > 0 ? (
+                        <ul className="notify-list">
+                          {notifications.map((notification, index) => (
+                            <li key={index}>
+                                          <p style={{marginBottom:"0"}}>{notification.body_message}</p>
+
+                                          <p className="time">{formatDate(notification.createddate)}</p>
+
+                            </li>
+                            ))}
+                        </ul>
+                      ) : (
                         <p style={{ textAlign: "center" }}>No Notification</p>
-                      </div>
+                      )}
                     </div>
                   </MDBCol>
                 </MDBRow>

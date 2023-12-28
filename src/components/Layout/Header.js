@@ -16,14 +16,17 @@ import EmailIcon from "@mui/icons-material/Email";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import profile from "../../img/profileIcon.png";
 import HeaderNotificationDropdown from "../../pages/HeaderNotificationModal";
+import ProfileModal from "../../pages/ProfileModal";
 
 const Navbar = () => {
+
   const state = useSelector((state) => state.login.isAuthenticated);
   const { uname } = useSelector((state) => state.login.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
-  
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+
   const LogOutHandler = (event) => {
     event.preventDefault();
 
@@ -39,11 +42,20 @@ const Navbar = () => {
 
 
   const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
+    if (event.currentTarget.textContent === "My Profile") {
+      setIsProfileModalOpen(true);
+      // Close the regular menu
+      setAnchorEl(null);
+    } else {
+      setAnchorEl(event.currentTarget);
+      // Close the profile modal
+      setIsProfileModalOpen(false);
+    }
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+    setIsProfileModalOpen(false);
 
   };
 
@@ -86,7 +98,7 @@ const Navbar = () => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>My Profile</MenuItem>
+              <MenuItem onClick={handleMenu}>My Profile</MenuItem>
               <MenuItem onClick={LogOutHandler}>Log Out</MenuItem>
 
 
@@ -94,6 +106,7 @@ const Navbar = () => {
           </div>
         </Toolbar>
       </AppBar>
+      <ProfileModal open={isProfileModalOpen} setOpen={setIsProfileModalOpen} />
     </div>
   );
 };

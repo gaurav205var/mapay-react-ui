@@ -1,0 +1,15 @@
+.notification-container {
+    display: flex;
+    flex-direction: column;
+    color: #010101;
+    border-bottom: 1px solid #e1dada;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    margin-bottom: 8px;
+    width: 280px;
+    /* display: inline-block; */
+    font-size: 14px;
+    white-space: pre-wrap;
+    padding-left: 10px;
+    padding-right: 10px;
+  }

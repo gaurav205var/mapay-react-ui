@@ -73,13 +73,13 @@ function Login() {
     } else if (verifyemail === true && Status?.status === 200) {
       switch (utype) {
         case 1:
-          navigate(`/dashboard/${uid}`);
+          navigate('/dashboard');
           break;
         case 2:
-          navigate(`/admin-dashboard/${uid}`);
+          navigate('/admin-dashboard');
           break;
         case 3:
-          navigate(`/reviewer-dashboard/${uid}`);
+          navigate('/reviewer-dashboard');
           break;
         default:
           

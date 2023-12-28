@@ -84,11 +84,11 @@ const EmailVerifySlice = createSlice({
     builder.addCase(GetUserandOtp.pending, (state, action) => {
       state.loading = true;
     })
-    // builder.addCase(GetUserandOtp.fulfilled, (state, { payload: { UserData,otp } }) => {
-    //   state.loading = false;
-    //   state.UserData = UserData;
-    //   state.otp = otp;
-    // })
+    builder.addCase(GetUserandOtp.fulfilled, (state, { payload: { UserData,otp } }) => {
+      state.loading = false;
+      state.UserData = UserData;
+      state.otp = otp;
+    })
     builder.addCase(GetUserandOtp.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;

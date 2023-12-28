@@ -1,7 +1,7 @@
 import Layout from "../components/Layout/Layout";
-import Sidebar from "./Sidebar";
+import ReviewerSidebar from "../ReviewerPages/ReviewerSidebar";
 import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Notification } from "../store/NotificationSlice";
 import {
@@ -19,10 +19,12 @@ const StandaloneSidebar = () => {
   // const location = useLocation();
   // const pathname = location.pathname;
   // const id = pathname.split('/').pop();
-  const { uname,uid } = useSelector((state) => state.login.user);
+  const { uname,uid } = useSelector((state) => state.login.user)
   const id = uid | 0;
   console.log('ID from URL:', id);
   const dispatch = useDispatch();
+  const notifications = useSelector((state) => state.notification.data);
+  console.log("notttifi", notifications);
   
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
 
@@ -32,32 +34,40 @@ const StandaloneSidebar = () => {
   useEffect(() => {
     dispatch(Notification(id))
   }, [])
+
+  // Function to format date
+function formatDate(createddate) {
+  const date = new Date(createddate);
+  const options = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true,
+  };
+  return date.toLocaleString('en-US', options);
+}
+
+
   return (
     <>
       <Layout>
         <MDBContainer fluid>
           <MDBRow>
-
-            <Sidebar isExpanded={isSidebarExpanded} onToggleSidebar={toggleSidebar} />
+            {/* Pass the function to update the state to ReviewerSidebar */}
+            <ReviewerSidebar isExpanded={isSidebarExpanded} onToggleSidebar={toggleSidebar} />
 
             <MDBCol md={isSidebarExpanded ? "9" : "11"}>
               <MDBContainer>
-
                 <MDBRow>
                   <div className="btn_container d-flex justify-content-between">
                     <h2 className="mt-4 mb-2 p-2">{uname}'s Dashboard</h2>
-                    <div className="btn_container d-flex justify-content-end" style={{ marginRight: "-60px" }}>
-                      <button type="button" className="btn btn-success btn1 mr-2" style={{ width: '180px', height: "43.83px" }}>
-                        <p style={{ fontFamily: "popins,sans-serif", fontSize: "13px", }}>Initial Application</p>
-                      </button>
-                      <button type="button" className="btn btn2 " style={{ width: '205px', height: "43.83px", fontSize: "16px", marginLeft: "12px" }}>
-                        <p style={{ fontFamily: "popins,sans-serif", fontSize: "13px", }}>Renewal Application</p>
-                      </button>
-                    </div>
                   </div>
 
                   <MDBCol
-                    md="10" sm="8"
+                    md="10"
                     className="table_contain"
                     style={{ padding: "10px 0px 0px" }}
                   >
@@ -74,7 +84,7 @@ const StandaloneSidebar = () => {
                       Recent Applications
                     </button>
 
-                    <MDBCard className="recent-applications">
+                    <MDBCard className="recent-applications" style={{ marginRight: "0px" }}>
                       <MDBCardBody style={{ padding: "0px" }}>
                         <MDBTable>
                           <MDBTableHead
@@ -82,8 +92,8 @@ const StandaloneSidebar = () => {
                             style={{ backgroundColor: "#575dae" }}
                           >
                             <tr className="tr">
+                              <th className="th">Application Name</th>
                               <th className="th">Application Type</th>
-                              <th className="th">Profession Type</th>
                               <th className="th">Status</th>
                               <th className="th">Last Updated</th>
                               <th className="th">Action</th>
@@ -113,20 +123,42 @@ const StandaloneSidebar = () => {
                       </MDBCardBody>
                     </MDBCard>
                   </MDBCol>
-                  <MDBCol md="2" sm="4" className="pl-10">
-                    <div className="not_contain">
+                  <MDBCol md="2" className="pl-10">
+                    <div className="title_btn">My Notifications</div>
+                    <div className="awesome">
+                      {notifications.length > 0 ? (
+                        <ul className="notify-list">
+                          {notifications.map((notification, index) => (
+                            <li key={index}>
+                                          <p style={{marginBottom:"0"}}>{notification.body_message}</p>
+
+                                          <p className="time">{formatDate(notification.createddate)}</p>
+
+                            </li>
+                            ))}
+                        </ul>
+                      ) : (
+                        <p style={{ textAlign: "center" }}>No Notification</p>
+                      )}
+                    </div>
+                  </MDBCol>
+                  {/* <MDBCol md="3">
+                    <div className="not_contain"
+                      style={{
+                        width: "280px",
+                        height: "250px",
+                        marginLeft: "-10.6px",
+                      }}
+                    >
                       <div>
                         <button className="title_btn">My Notification</button>
                       </div>
-                      <div className="awesome"
-                        style={{ padding: "10px", margin: "10px" }}>
-                        
-                       <li></li>
-                      </div>
+
                     </div>
-                  </MDBCol>
+                  </MDBCol> */}
                 </MDBRow>
               </MDBContainer>
+
             </MDBCol>
           </MDBRow>
         </MDBContainer>
