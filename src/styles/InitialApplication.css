@@ -1,0 +1,215 @@
+.initial-container {
+  height: fit-content;
+}
+
+.sidebar-section {
+  width: 264px;
+}
+
+.initial-label {
+  color: #010101;
+  font-size: 14px;
+  font-family: "lato", sans-serif;
+  margin: 0px 6px 2px;
+  padding: 6px 0px;
+  font-weight: 650;
+}
+
+.second-content {
+  width: 780px;
+  color: #010101;
+  font-size: 14px;
+  font-family: "lato", sans-serif;
+  margin: 0px 4px;
+}
+
+.initial-headings {
+  display: inline;
+  color: #5d5d5d;
+  font-size: 32px;
+  font-weight: 540;
+  position: relative;
+  top: 20px;
+  font-family: "lato", sans-serif;
+}
+
+.initial-label-1 {
+  color: #010101;
+  font-size: 14px;
+  font-family: "lato", sans-serif;
+  margin: 35px 6px 5px;
+  padding: 6px 0px;
+  font-weight: 650;
+}
+
+.second-content > .drop-down-label-1 {
+  color: #010101;
+  font-size: 14px;
+  font-family: "lato", sans-serif;
+  margin: 5px 0px 5px 0px;
+  font-weight: 770;
+  letter-spacing: 0.3px;
+  margin-top: 15px;
+}
+
+.initial-app-content {
+  color: #010101;
+  font-size: 16px;
+  width: 780px;
+  height: 144px;
+  font-family: "lato", sans-serif;
+  margin: 13px 0px 0px -7px;
+  padding-left: 12px;
+  padding-right: 29px;
+}
+
+.conditional-label {
+  margin-top: 3px;
+  margin-left: 0px;
+}
+
+.initial-select-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.initial-list {
+  list-style-type: square;
+  width: 745px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1.5px solid gainsboro;
+  padding-left: 36px;
+  padding-top: 5px;
+  margin-top: 7px;
+}
+
+.initial-list li {
+  flex: 0 0 calc(33.33% - 10px);
+  color: #2d2d2d;
+  font-size: 14px;
+  font-family: "lato", sans-serif;
+  padding: 6px;
+}
+
+.initial-list li:nth-child(3n) {
+  margin-left: 0;
+}
+
+.initial-app-sections {
+  max-height: 86vh;
+  overflow-y: scroll;
+}
+/* Hide the scrollbar for Webkit browsers (e.g., Chrome, Safari) */
+.initial-app-sections::-webkit-scrollbar {
+  width: 0; /* Set width to 0 to hide scrollbar */
+}
+
+/* Optional: You can style the track and handle if desired */
+.initial-app-sections::-webkit-scrollbar-track {
+  background: transparent; /* Track color */
+}
+
+.initial-app-sections::-webkit-scrollbar-thumb {
+  background: #888; /* Handle color */
+}
+
+.second-container {
+  /* height: 98px; */
+}
+
+.second-container > .drop-down-label-2 {
+  color: #010101;
+  font-size: 14px;
+  font-family: "lato", sans-serif;
+  margin: 5px 0px 5px 0px;
+  font-weight: 770;
+  letter-spacing: 0.3px;
+}
+
+.asterisk {
+  position: relative;
+  top: 0;
+  right: 0;
+  color: red;
+}
+
+.second-container > .drop-down-label-2 {
+  color: #010101;
+  font-size: 14px;
+  font-family: "lato", sans-serif;
+  margin: 5px 0px 5px 0px;
+  font-weight: 770;
+  letter-spacing: 0.3px;
+}
+
+.initial-para {
+  color: #444;
+  font-size: 14px;
+  font-family: "lato", sans-serif;
+  font-style: italic;
+  line-height: 20px;
+  padding: 0px 12px;
+  margin-top: 10px;
+}
+
+.initial-btns-container {
+  text-align: center;
+  left: -37px;
+  width: 780px;
+  height: 123px;
+  margin-bottom: 1.4rem;
+}
+
+.initial-btns-container > .initial-button {
+  width: 180px;
+  height: 45px;
+  border: none;
+  border-radius: 25px;
+  background-color: #5ba955 !important;
+  color: #ffffff;
+  font-size: 18px;
+  font-family: "popins", sans-serif;
+  margin: 30px 0px 48px;
+  padding: 10px 6px 8px;
+}
+
+.initial-btns-container > .initial-button:hover {
+  transform: scale(1.01);
+  background-color: #5ba955;
+}
+
+.two-div {
+  width: 745px;
+  height: fit-content;
+  margin-top: 0px;
+  display: flex;
+}
+
+
+.start-label,
+.end-label {
+  font-size: 14px;
+  font-family: "lato", sans-serif;
+  font-weight: 650;
+}
+
+.div-one,
+.div-two {
+  display: flex;
+  flex-direction: column;
+}
+
+.div-one .inputing,
+.div-two .inputing {
+  margin-right: 2px;
+  width: 94%;
+  height: 48px;
+  outline: none;
+}
+
+.div-two .inputing {
+  float: inline-end;
+}

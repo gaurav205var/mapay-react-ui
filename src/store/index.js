@@ -5,6 +5,8 @@ import forget_pwdSlice from "./forget_pwdSlice";
 import setNewPwdSlice from "./setNewPwdSlice";
 import EmailVerifySlice  from "./EmailVerifySlice";
 import NotificationSlice from "./NotificationSlice";
+import InitialAppSlice from "./InitialAppSlice";
+import CheckHpSlice from "./CheckHpSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
     resetPwd: setNewPwdSlice,
     emailVerify: EmailVerifySlice,
     notification: NotificationSlice,
+    initialApplication: InitialAppSlice,
+    checkhp : CheckHpSlice
   },
 });
 

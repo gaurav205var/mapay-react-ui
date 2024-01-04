@@ -1,0 +1,155 @@
+.right-container {
+  background-color: #f1f1f1;
+  margin-top: 10px;
+  padding: 15px 15px 40px;
+}
+
+.register-heading {
+  color: #5d5d5d;
+  font-size: 24px;
+  margin: 0px 0px 0px 10px;
+}
+
+.main-body-content {
+  margin-top: 5px;
+  overflow-y: auto;
+  max-height: 510px;
+}
+/* Hide the scrollbar for Webkit browsers (e.g., Chrome, Safari) */
+.main-body-content::-webkit-scrollbar {
+  width: 0; /* Set width to 0 to hide scrollbar */
+}
+
+/* Optional: You can style the track and handle if desired */
+.main-body-content::-webkit-scrollbar-track {
+  background: transparent; /* Track color */
+}
+
+.main-body-content::-webkit-scrollbar-thumb {
+  background: #888; /* Handle color */
+}
+
+.top-inner-heading {
+  font-weight: 700;
+  font-family: sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #010101;
+  padding: 0px 12px;
+}
+
+.Profession-card {
+  /* width: calc(100% + 30px); */
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid lightgrey;
+  border-radius: 0%;
+}
+
+.Profession {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.accordian-card {
+  background-color: #60579b;
+  margin-bottom: 10px;
+  /* width: calc(100% + 30px); */
+  width: 100%;
+}
+.accordian-body {
+  background-color: #f1effe;
+  color: #010101;
+  border: 1px solid #ddd;
+}
+.accordianss {
+  color: white;
+}
+
+.accordianss span {
+  padding: 0px 10px 2px 20px;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "popins", sans-serif;
+}
+
+.right-table {
+  margin-top: 90px;
+}
+.Tab-Heading {
+  font-weight: 800;
+  font-size: 16px;
+  color: #010101;
+  margin: 0px 0px 4px;
+}
+
+.Doc-table {
+  border: solid 1px #dfe7eb;
+  background-color: #ffffff;
+}
+
+.Doc-table thead {
+  color: white;
+  background-color: #575dae;
+ 
+}
+.Doc-table th {
+  height: 34px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+
+.sub-btn {
+  background-color: #5694d0;
+  width: 180px;
+  margin: 20px 16px 0px;
+}
+.draft-btn {
+  background-color: #5ba955;
+  width: 180px;
+  margin: 20px 0px 0px;
+}
+
+.info-text{
+  color: #444;
+  font-size: 14px;
+  font-family: "lato",sans-serif;
+  font-style: italic;
+  line-height: 20px;
+  margin-top: 10px;
+}
+.selection{
+  width: 745px;
+  height: 50px;
+  border: 1px solid #e1dada;
+  outline: none;
+  padding-left: 4px;
+  font-size: 16px;
+  font-family: 'lato', sans-serif;
+  text-align: left;
+  color: #999999;
+  text-align: left;
+}
+.continue-btn{
+  background-color: #5ba955;
+  width: 238px;
+  height: 47px;
+  margin-top: 30px;
+}
+.Immigration-status{
+  margin-top: 10px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+.application-att{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.light-label{
+  font-weight: 600;
+}

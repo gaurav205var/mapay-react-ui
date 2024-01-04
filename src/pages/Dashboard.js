@@ -1,9 +1,9 @@
 import Layout from "../components/Layout/Layout";
 import Sidebar from "./Sidebar";
-import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Notification } from "../store/NotificationSlice";
+import { useNavigate } from "react-router-dom";
 import {
   MDBContainer,
   MDBRow,
@@ -16,22 +16,46 @@ import {
 } from "mdb-react-ui-kit";
 
 const StandaloneSidebar = () => {
+  const navigate = useNavigate();
   // const location = useLocation();
   // const pathname = location.pathname;
   // const id = pathname.split('/').pop();
-  const { uname,uid } = useSelector((state) => state.login.user);
+  const { uname, uid } = useSelector((state) => state.login.user);
   const id = uid | 0;
   console.log('ID from URL:', id);
   const dispatch = useDispatch();
-  
+  const notifications = useSelector((state) => state.notification.data);
+
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
 
+  const handler = () => {
+    navigate("/initial-application");
+  }
+  const handler2 = () => {
+    navigate("/renewal-application");
+  }
   const toggleSidebar = () => {
     setIsSidebarExpanded(!isSidebarExpanded);
   };
   useEffect(() => {
     dispatch(Notification(id))
   }, [])
+
+  // Function to format date
+  function formatDate(createddate) {
+    const date = new Date(createddate);
+    const options = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+    };
+    return date.toLocaleString('en-US', options);
+  }
+
   return (
     <>
       <Layout>
@@ -47,10 +71,10 @@ const StandaloneSidebar = () => {
                   <div className="btn_container d-flex justify-content-between">
                     <h2 className="mt-4 mb-2 p-2">{uname}'s Dashboard</h2>
                     <div className="btn_container d-flex justify-content-end" style={{ marginRight: "-60px" }}>
-                      <button type="button" className="btn btn-success btn1 mr-2" style={{ width: '180px', height: "43.83px" }}>
+                      <button type="button" onClick={handler} className="btn btn-success btn1 mr-2" style={{ width: '180px', height: "43.83px" }}>
                         <p style={{ fontFamily: "popins,sans-serif", fontSize: "13px", }}>Initial Application</p>
                       </button>
-                      <button type="button" className="btn btn2 " style={{ width: '205px', height: "43.83px", fontSize: "16px", marginLeft: "12px" }}>
+                      <button onClick={handler2} type="button" className="btn btn2 " style={{ width: '205px', height: "43.83px", fontSize: "16px", marginLeft: "12px" }}>
                         <p style={{ fontFamily: "popins,sans-serif", fontSize: "13px", }}>Renewal Application</p>
                       </button>
                     </div>
@@ -113,16 +137,23 @@ const StandaloneSidebar = () => {
                       </MDBCardBody>
                     </MDBCard>
                   </MDBCol>
-                  <MDBCol md="2" sm="4" className="pl-10">
-                    <div className="not_contain">
-                      <div>
-                        <button className="title_btn">My Notification</button>
-                      </div>
-                      <div className="awesome"
-                        style={{ padding: "10px", margin: "10px" }}>
-                        
-                       <li></li>
-                      </div>
+                  <MDBCol md="2" className="pl-10">
+                    <div className="title_btn">My Notifications</div>
+                    <div className="awesome">
+                      {notifications.length > 0 ? (
+                        <ul className="notify-list">
+                          {notifications.map((notification, index) => (
+                            <li key={index}>
+                              <p style={{ marginBottom: "0" }}>{notification.body_message}</p>
+
+                              <p className="time">{formatDate(notification.createddate)}</p>
+
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p style={{ textAlign: "center", marginTop: "15px" }}>No Notification</p>
+                      )}
                     </div>
                   </MDBCol>
                 </MDBRow>

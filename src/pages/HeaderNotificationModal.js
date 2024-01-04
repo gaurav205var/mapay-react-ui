@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from "react-redux";
-import { Menu, MenuItem, IconButton } from '@mui/material';
+import { Menu,IconButton } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import "../styles/HeaderNotification.css";
 

@@ -1,6 +1,5 @@
 import Layout from "../components/Layout/Layout";
 import AdminSidebar from "./AdminSidebar";
-import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Notification } from "../store/NotificationSlice";
@@ -118,7 +117,7 @@ function formatDate(createddate) {
                       </MDBCardBody>
                     </MDBCard>
                   </MDBCol>
-                  <MDBCol md="2" className="pl-10">
+                  <MDBCol md="2" className="pl-10 mb-2">
                     <div className="title_btn">My Notifications</div>
                     <div className="awesome">
                       {notifications.length > 0 ? (

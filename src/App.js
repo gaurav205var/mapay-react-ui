@@ -21,6 +21,9 @@ import AdminProfile from "./AdminPages/AdminProfile";
 import ReviewMessage from "./ReviewerPages/ReviewMessage";
 import ReviewerProfile from "./ReviewerPages/ReviewerProfile";
 import ArchivedApplications from "./ReviewerPages/ArchivedApplications";
+import InitialApplication from "./pages/InitialApplication";
+import RenewalApplication from "./pages/RenewalApplication";
+import InitialRegistration from "./pages/InitialRegistration";
 
 
 function App() {
@@ -49,6 +52,9 @@ function App() {
           <Route path="/email-verification/:id" element={<EmailVerify />} />
           <Route path="/verification-successful" element={<EmailSuccessful />} />
           <Route path="/archived-applications" element={<ArchivedApplications/>} />
+          <Route path="/initial-application" element={<InitialApplication/>} />
+          <Route path="/renewal-application" element={<RenewalApplication/>} />
+          <Route path="/initial-application-registration" element={<InitialRegistration/>} />
           
 
         </Routes>

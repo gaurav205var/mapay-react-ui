@@ -41,7 +41,7 @@
   padding: 10px 12px;
   position: relative;
   top: 0.6rem;
-  left: 0.6rem;
+  /* left: 0.6rem; */
   width: 280px;
   height: 44px;
 }
@@ -49,6 +49,7 @@
   background-color: white;
   padding: 5px;
   border-radius: 10px;
+  width: 280px;
 }
 .notify-list {
   list-style: none;
