@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { DropDown } from '../store/InitialAppSlice';
 import "../styles/RenewalApplication.css";
 import "../styles/InitialDropdown.css"
 import Layout from '../components/Layout/Layout';
@@ -12,9 +14,14 @@ import Sidebar from './Sidebar';
 
 
 const RenewalApplication = () => {
+    const Professions = useSelector((state) => state.initialApplication.data)
     const [isButtonEnabled, setButtonEnabled] = useState(false);
     const [selectedItem, setSelectedItem] = useState('');
     const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
+    const dispatch = useDispatch();
+    const str = "Renewal";
+
+
     const handleOptionSelect = (selectedValue) => {
         setSelectedItem(selectedValue);
         setButtonEnabled(!!selectedValue); // Enable the button if a value is selected
@@ -24,7 +31,9 @@ const RenewalApplication = () => {
     const toggleSidebar = () => {
         setIsSidebarExpanded(!isSidebarExpanded);
     };
-
+    useEffect(() => {
+        dispatch(DropDown(str));
+    }, []);
     return (
         <>
             <Layout>
@@ -32,7 +41,7 @@ const RenewalApplication = () => {
                     <MDBRow>
 
                         <Sidebar isExpanded={isSidebarExpanded} onToggleSidebar={toggleSidebar} />
-                        
+
                         <MDBCol md={isSidebarExpanded ? "9" : "11"} className='initial-app-section-2'>
                             <div className="initial-heading-2">Renewal Application</div>
                             <div className="initial-row-2 i-group">
@@ -54,9 +63,15 @@ const RenewalApplication = () => {
                                         onChange={(event) => handleOptionSelect(event.target.value)}
                                     >
                                         <option hidden defaultChecked className='options-drop'>Select Health Profession Type</option>
-                                        <option value="One" className='options-drop'>Optician</option>
-                                        <option value="Two" className='options-drop'>Optometrist</option>
-                                        <option value="Three" className='options-drop'>Optometrist (Prescribing)</option>
+                                        {Professions ? (
+                                            Professions.map((Profession, index) => (
+                                                <option key={`profession-${index}`}>
+                                                    {Profession.hpname}
+                                                </option>
+                                            ))
+                                        ) : (
+                                            <option disabled>Loading professions...</option>
+                                        )}
                                     </select>
                                 </div>
                             </div>

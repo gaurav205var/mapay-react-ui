@@ -25,8 +25,14 @@ import InitialApplication from "./pages/InitialApplication";
 import RenewalApplication from "./pages/RenewalApplication";
 import InitialRegistration from "./pages/InitialRegistration";
 
+import { ProtectedRoute } from "./Helper/ProtectedRoutes";
+
 
 function App() {
+  const Applicant = 1;
+  const Admin = 2;
+  const Reviewer = 3;
+
   return (
     <div>
       <BrowserRouter>
@@ -34,28 +40,65 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          <Route path="/reviewer-dashboard" element={<ReviewDashboard />} />
           <Route path="/forgot-password" element={<Password />} />
           <Route path="/new-password/*" element={<NewPassword />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/admin-profile" element={<AdminProfile/>} />
-          <Route path="/reviewer-profile" element={<ReviewerProfile/>} />
-          <Route path="/certificates" element={<Certificate />} />
-          <Route path="/admin-credentials" element={<AdminCertificate />} />
-          <Route path="/vault" element={<Vault />} />
-          <Route path="/my-messages" element={<MessageCards />} />
-          <Route path="/admin-messages" element={<AdminMessage/>} />
-          <Route path="/reviewer-messages" element={<ReviewMessage/>} />
-          <Route path="/my-applications" element={<MyApplication />} />
           <Route path="/email-verification/:id" element={<EmailVerify />} />
           <Route path="/verification-successful" element={<EmailSuccessful />} />
-          <Route path="/archived-applications" element={<ArchivedApplications/>} />
-          <Route path="/initial-application" element={<InitialApplication/>} />
-          <Route path="/renewal-application" element={<RenewalApplication/>} />
-          <Route path="/initial-application-registration" element={<InitialRegistration/>} />
-          
+          <Route path="/dashboard" element={<ProtectedRoute type={Applicant}>
+            <Dashboard />
+          </ProtectedRoute>
+          } />
+          <Route path="/admin-dashboard" element={<ProtectedRoute type={Admin} >
+            <AdminDashboard />
+          </ProtectedRoute>
+          } />
+          <Route path="/reviewer-dashboard" element={<ProtectedRoute type={Reviewer} >
+            <ReviewDashboard />
+          </ProtectedRoute>
+          } />
+          <Route path="/profile" element={<ProtectedRoute type={Applicant}>
+            <Profile />
+          </ProtectedRoute>} />
+          <Route path="/admin-profile" element={<ProtectedRoute type={Admin}>
+            <AdminProfile />
+          </ProtectedRoute>} />
+          <Route path="/reviewer-profile" element={<ProtectedRoute type={Reviewer}>
+            <ReviewerProfile />
+          </ProtectedRoute>} />
+          <Route path="/certificates" element={<ProtectedRoute type={Applicant}>
+            <Certificate />
+          </ProtectedRoute>} />
+          <Route path="/admin-credentials" element={<ProtectedRoute type={Admin}>
+            <AdminCertificate />
+          </ProtectedRoute>} />
+          <Route path="/vault" element={<ProtectedRoute type={Applicant}>
+            <Vault />
+          </ProtectedRoute>} />
+          <Route path="/my-messages" element={<ProtectedRoute type={Applicant}>
+            <MessageCards />
+          </ProtectedRoute>} />
+          <Route path="/admin-messages" element={<ProtectedRoute type={Admin}>
+            <AdminMessage />
+          </ProtectedRoute>} />
+          <Route path="/reviewer-messages" element={<ProtectedRoute type={Reviewer}>
+            <ReviewMessage />
+          </ProtectedRoute>} />
+          <Route path="/my-applications" element={<ProtectedRoute type={Applicant}>
+            <MyApplication />
+          </ProtectedRoute>} />
+          <Route path="/archived-applications" element={<ProtectedRoute type={Reviewer}>
+            <ArchivedApplications />
+          </ProtectedRoute>} />
+          <Route path="/initial-application" element={<ProtectedRoute type={Applicant}>
+            <InitialApplication />
+          </ProtectedRoute>} />
+          <Route path="/renewal-application" element={<ProtectedRoute type={Applicant}>
+            <RenewalApplication />
+          </ProtectedRoute>} />
+          <Route path="/initial-application-registration" element={<ProtectedRoute type={Applicant}>
+            <InitialRegistration />
+          </ProtectedRoute>} />
+
 
         </Routes>
       </BrowserRouter>

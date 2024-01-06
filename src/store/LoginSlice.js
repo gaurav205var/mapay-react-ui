@@ -41,8 +41,8 @@ export const LoginUser = createAsyncThunk("LoginData", async (loginData) => {
     if (contentType && contentType.includes("application/json")) {
       const data = await response.json();
       console.log("success", data);
-      const { verifyemail, uid, tokenvalue } = data;
-      return { data, status: response.status, verifyemail, uid, tokenvalue };
+      const { verifyemail, uid, tokenvalue,refreshToken } = data;
+      return { data, status: response.status, verifyemail, uid, tokenvalue ,refreshToken};
     } else {
       return { status: response.status };
     }
@@ -61,18 +61,14 @@ export const LoginSlice = createSlice({
     loading: false,
     error: null,
     loginStatus: null,
-    verifyemail: "",
+    // verifyemail: "",
     uid: ""
   },
   reducers: {
-    // login: (state, action) => {
-    //   state.isAuthenticated = true;
-    //   state.user = action.payload;
-    // },
     logout: (state) => {
-      localStorage.removeItem("token");
+      localStorage.clear();
       state.isAuthenticated = false;
-      // state.user = null;
+      state.user = "";
       state.token = "";
       state.loginStatus = null;
     },
@@ -82,15 +78,16 @@ export const LoginSlice = createSlice({
       .addCase(LoginUser.pending, (state, action) => {
         state.loading = true;
       })
-      .addCase(LoginUser.fulfilled, (state, { payload: { data, status, verifyemail, uid, tokenvalue } }) => {
+      .addCase(LoginUser.fulfilled, (state, { payload: { data, status, uid, tokenvalue,refreshToken } }) => {
         state.loading = false;
         state.token = tokenvalue;
         state.isAuthenticated = true;
         state.loginStatus = { status };
-        state.verifyemail = verifyemail;
+        // state.verifyemail = verifyemail;
         state.uid = uid;
         state.user = data;
         localStorage.setItem("token", tokenvalue);
+        localStorage.setItem("refToken",refreshToken);
       })
       .addCase(LoginUser.rejected, (state, action) => {
         state.loading = false;

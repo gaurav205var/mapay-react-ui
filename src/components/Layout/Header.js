@@ -21,7 +21,7 @@ import ProfileModal from "../../pages/ProfileModal";
 const Navbar = () => {
 
   const state = useSelector((state) => state.login.isAuthenticated);
-  const { uname } = useSelector((state) => state.login.user);
+  const { uname,notificationCount } = useSelector((state) => state.login.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -68,8 +68,11 @@ const Navbar = () => {
           </Typography>
           <div className="right">
             <EmailIcon className="eicon" />
-            {/* <NotificationsIcon style={{ marginLeft: "1rem" }} /> */}
+           
             <HeaderNotificationDropdown className="notification-1" />
+            {notificationCount > 0 && (
+              <span className="notification-count">{notificationCount}</span>
+            )}
             <Button
               onClick={handleMenu}
               sx={{

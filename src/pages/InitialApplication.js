@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
-import 'react-datepicker/dist/react-datepicker.css';
 import "../styles/InitialApplication.css";
 import Layout from '../components/Layout/Layout';
 import "../styles/InitialDropdown.css";

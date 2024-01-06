@@ -1,11 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { CheckExp } from '../Helper/TokenHandle';
+
 
 
 export const Notification = createAsyncThunk("uid", async (uid) => {
-    const authToken = localStorage.getItem("token");
-    console.log("toekn", authToken);
-    console.log("id in notification Slice", uid)
-    console.log("tyepe", typeof (uid))
+
+
+    // Check token expiration before making API calls
+    const authToken = await CheckExp();
+    console.log("token in notifica", authToken);
+    // const authToken = localStorage.getItem("token");
     try {
 
         const GetUser = await fetch(`https://creddemoapi.azurewebsites.net/api/Notifications/GetUserDetails/${uid}`, {
@@ -18,8 +22,7 @@ export const Notification = createAsyncThunk("uid", async (uid) => {
         const responseData = await GetUser.json();
         // const { notificationCount } = responseData;
         const notificationCount = 5;
-        console.log("count", notificationCount);
-        console.log("Data:", responseData);
+        console.log("Succes notification", responseData);
 
         //fetch notification
         const GetNotification = await fetch(`https://creddemoapi.azurewebsites.net/api/Notifications/GetNotification/${uid}/${notificationCount}
@@ -30,15 +33,15 @@ export const Notification = createAsyncThunk("uid", async (uid) => {
                 "Authorization": `Bearer ${authToken}`,
             }
         });
-        console.log("HTTP Status Code:", GetNotification.status);
-        console.log("Headers:", GetNotification.headers);
+        // console.log("HTTP Status Code:", GetNotification.status);
+        // console.log("Headers:", GetNotification.headers);
 
         if (!GetNotification.ok) {
             throw new Error(`HTTP error! Status: ${GetNotification.status}`);
         }
 
         const ResNotification = await GetNotification.json();
-        console.log("heyyy", ResNotification);
+        // console.log("heyyy", ResNotification);
         return {
             ResNotification
         };
@@ -49,6 +52,29 @@ export const Notification = createAsyncThunk("uid", async (uid) => {
         throw error;
     };
 });
+
+export const ResetNotification = createAsyncThunk("input", async (input) => {
+    // Check token expiration before making API calls
+    const authToken = await CheckExp();
+
+    try {
+        const response = await fetch("https://creddemoapi.azurewebsites.net/api/Notifications/ResetNotificationCount", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${authToken}`,
+            },
+            body: JSON.stringify(input),
+        });
+        const data = response.json();
+        console.log("success Reset", data);
+    } catch (error) {
+        // Handle errors
+        console.error("Error:", error);
+        throw error;
+    };
+});
+
 
 
 const NotificationSlice = createSlice({

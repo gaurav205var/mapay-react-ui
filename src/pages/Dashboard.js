@@ -15,14 +15,11 @@ import {
   MDBTableBody,
 } from "mdb-react-ui-kit";
 
+
 const StandaloneSidebar = () => {
   const navigate = useNavigate();
-  // const location = useLocation();
-  // const pathname = location.pathname;
-  // const id = pathname.split('/').pop();
   const { uname, uid } = useSelector((state) => state.login.user);
   const id = uid | 0;
-  console.log('ID from URL:', id);
   const dispatch = useDispatch();
   const notifications = useSelector((state) => state.notification.data);
 

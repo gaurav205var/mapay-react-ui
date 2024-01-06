@@ -1,6 +1,8 @@
 import React from "react";
 import "../styles/Home.css";
 import bermuda_logo from "../img/bhc-logo.png";
+import { logout } from "../store/LoginSlice";
+import { useDispatch} from "react-redux";
 import {
   MDBContainer,
   MDBRow,
@@ -11,6 +13,9 @@ import {
 import { NavLink } from "react-router-dom";
 
 function Home() {
+  const dispatch = useDispatch();
+  localStorage.clear();
+  dispatch(logout());
   return (
     <MDBContainer fluid>
       <MDBRow

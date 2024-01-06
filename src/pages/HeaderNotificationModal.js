@@ -1,22 +1,31 @@
 import React, { useState } from 'react';
-import { useSelector } from "react-redux";
-import { Menu,IconButton } from '@mui/material';
+import { useDispatch, useSelector } from "react-redux";
+import { Menu, IconButton } from '@mui/material';
+import { ResetNotification } from "../store/NotificationSlice";
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import "../styles/HeaderNotification.css";
 
 const HeaderNotificationDropdown = () => {
-    const notifications = useSelector((state) => state.notification.data);
-    const [anchorElement, setAnchorElement] = useState(null);
+  const dispatch = useDispatch();
+  const { uid } = useSelector((state) => state.login.user)
+  const notifications = useSelector((state) => state.notification.data);
+  const [anchorElement, setAnchorElement] = useState(null);
 
-    const handleClick = (event) => {
-        setAnchorElement(event.currentTarget);
-    };
+  const input = {
+    uid,
+    notificationCount: 0,
+    flag: 1
+  }
+  const handleClick = (event) => {
+    setAnchorElement(event.currentTarget);
+    dispatch(ResetNotification(input));
+  };
 
-    const handleClose = () => {
-        setAnchorElement(null);
-    };
-      // Function to format date
-function formatDate(createddate) {
+  const handleClose = () => {
+    setAnchorElement(null);
+  };
+  // Function to format date
+  function formatDate(createddate) {
     const date = new Date(createddate);
     const options = {
       year: 'numeric',
@@ -30,9 +39,8 @@ function formatDate(createddate) {
     return date.toLocaleString('en-US', options);
   }
 
-   // ... (existing code)
 
-return (
+  return (
     <>
       <IconButton
         style={{
@@ -45,7 +53,7 @@ return (
       >
         <NotificationsIcon />
       </IconButton>
-  
+
       <Menu
         className="d-flex flex-column"
         anchorEl={anchorElement}
@@ -69,7 +77,7 @@ return (
         </div>
       </Menu>
     </>
- );
-          };
-  
+  );
+};
+
 export default HeaderNotificationDropdown;

@@ -3,6 +3,7 @@ import "../styles/Login.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { CheckExp } from "../Helper/TokenHandle";
 import { LoginUser } from "../store/LoginSlice";
 import bermuda_logo from "../img/bhc-logo.png";
 import {
@@ -17,7 +18,6 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function Login() {
   const dispatch = useDispatch();
-  const {uid,utype} = useSelector((state) => state.login.user)
   const navigate = useNavigate();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -51,26 +51,29 @@ function Login() {
     return isValid;
   };
   const Status = useSelector((state) => state.login.loginStatus);
-  const verifyemail = useSelector((state) => state.login.verifyemail);
 
 
-  const handleSubmit = (event) => {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (validateForm()) {
       try {
-        dispatch(LoginUser(loginData));
+        await dispatch(LoginUser(loginData));
       } catch (error) {
         setServerError("An unexpected error occurred");
         console.error("Error:", error);
       }
     }
   };
+  const { uid, utype, verifyemail } = useSelector((state) => state.login.user)
+
 
   useEffect(() => {
     if (verifyemail === false) {
       navigate(`/email-verification/${uid}`);
     } else if (verifyemail === true && Status?.status === 200) {
+      CheckExp();
       switch (utype) {
         case 1:
           navigate('/dashboard');
@@ -82,9 +85,9 @@ function Login() {
           navigate('/reviewer-dashboard');
           break;
         default:
-          
+
           break;
-      }    
+      }
     }
   }, [verifyemail, Status, navigate]);
 
