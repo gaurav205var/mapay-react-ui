@@ -138,20 +138,6 @@ function formatDate(createddate) {
                       )}
                     </div>
                   </MDBCol>
-                  {/* <MDBCol md="3">
-                    <div className="not_contain"
-                      style={{
-                        width: "280px",
-                        height: "250px",
-                        marginLeft: "-10.6px",
-                      }}
-                    >
-                      <div>
-                        <button className="title_btn">My Notification</button>
-                      </div>
-
-                    </div>
-                  </MDBCol> */}
                 </MDBRow>
               </MDBContainer>
 

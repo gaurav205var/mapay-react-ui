@@ -103,7 +103,9 @@ const InitialApplication = () => {
     };
     console.log("user data", UserInput);
 
-
+    if (hpTypeId) {
+        localStorage.setItem("hpid", hpTypeId);
+    }
     const payload = {
         uid,
         hpTypeId

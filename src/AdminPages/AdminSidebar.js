@@ -8,10 +8,6 @@ import { faArrowCircleRight, faArrowCircleLeft } from '@fortawesome/free-solid-s
 
 const Sidebar = ({ isExpanded, onToggleSidebar }) => {
   const location = useLocation();
-  // const [isExpanded, setIsExpanded] = useState(true);
-  // const toggleSidebar = () => {
-  //   setIsExpanded(!isExpanded);
-  // };
 
   return (
     <div className={`${isExpanded ? "sidebar-expand" : "sidebar-collapse"} col-md-${isExpanded ? "3" : "1"}`}>
