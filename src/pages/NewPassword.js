@@ -12,7 +12,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useDispatch} from "react-redux";
 import { SetNewPwd } from "../store/setNewPwdSlice";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 function NewPassword() {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ function NewPassword() {
   const [cpassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const location = useLocation();
+  // const location = useLocation();
   const currentURL = window.location.href;
   
 

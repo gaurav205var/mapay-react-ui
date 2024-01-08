@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   MDBContainer,
   MDBRow,
@@ -81,7 +82,7 @@ const MyApplication = () => {
                             <td>Draft</td>
                             <td>12/5/2023 3:06:17 AM</td>
                             <td>
-                              <a href="">Edit</a>
+                              <Link to="">Edit</Link>
                             </td>
                           </tr>
                           <tr>
@@ -90,7 +91,7 @@ const MyApplication = () => {
                             <td>Draft</td>
                             <td>10/10/2023 6:35:44 AM</td>
                             <td>
-                              <a href="">Edit</a>
+                              <Link to="">Edit</Link>
                             </td>
                           </tr>
                         </MDBTableBody>

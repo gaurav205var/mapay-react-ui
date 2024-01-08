@@ -1,6 +1,5 @@
 import Layout from "../components/Layout/Layout";
 import ReviewerSidebar from "../ReviewerPages/ReviewerSidebar";
-import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Notification } from "../store/NotificationSlice";
@@ -16,9 +15,6 @@ import {
 } from "mdb-react-ui-kit";
 
 const StandaloneSidebar = () => {
-  // const location = useLocation();
-  // const pathname = location.pathname;
-  // const id = pathname.split('/').pop();
   const { uname,uid } = useSelector((state) => state.login.user)
   const id = uid | 0;
   console.log('ID from URL:', id);
